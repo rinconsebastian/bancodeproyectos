@@ -9,6 +9,9 @@ Document
 Use a better box model (opinionated).
 */
 
+
+
+
 *,
 ::before,
 ::after {
@@ -366,6 +369,8 @@ body {
   font-family: inherit;
   line-height: inherit;
 }
+
+
 
 /**
  * 1. Prevent padding and border from affecting element width.
@@ -2224,5 +2229,13 @@ select {
 		padding-left: 2rem;
 		padding-right: 2rem;
 	}
+}
+
+.h-fit{
+	height: -webkit-fill-available;
+}
+
+.activemenu{ 
+	background-color: #3258c7;
 }
 

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/proyectos/');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -28,3 +28,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('/proyectos', ProyectoController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/proyectos/{estado}/listado', [ProyectoController::class, 'listado'])->name('proyectos.listado');

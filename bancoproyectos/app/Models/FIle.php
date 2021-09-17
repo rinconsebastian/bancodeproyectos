@@ -9,6 +9,8 @@ class File extends Model
 {
     use HasFactory;
 
+    protected $fillable =['detalle', 'tipo','url' ];
+
     // relacion muchos a muchos polimorfica (inversa
     
     public function Revisiones(){

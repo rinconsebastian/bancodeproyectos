@@ -29,7 +29,7 @@ class ProyectoFactory extends Factory
         'valor' => $this->faker->randomNumber(8),
         'sector' => $this->faker->randomElement(['Salud','Educación','Infraestrcutura','Mobiliario','Vías']),
         'tiempo' => random_int(1,48),
-        'estado' =>$this->faker->randomElement(['Borrador','Presentado','Revision','Ajustes','Aprobado',"Rechazado"]),
+        'estado' =>$this->faker->randomElement(['Borrador','Presentado','Revision','Devuelto','Aprobado',"Rechazado"]),
         'user_id' => User::inRandomOrder()->take(1)->first()->id
             //
         ];
