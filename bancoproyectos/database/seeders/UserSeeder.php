@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
     $user->email_verified_at = now();
     $remember_token = "asfsrtertr";
     $user->dependencia_id = Dependencia::take(1)->first()->id;
+    
 
     $user->save();
 

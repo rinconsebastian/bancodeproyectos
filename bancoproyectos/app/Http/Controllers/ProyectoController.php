@@ -46,11 +46,13 @@ class ProyectoController extends Controller
             'name' => 'required|unique:proyectos|max:255',
             'fuente' => 'required',
             'fase' => 'required',
-            'valor' => 'required|numeric|min:1000',
+            'valor' => 'required|numeric|min:0',
             'sector' => 'required',
             'tiempo' => 'required|min:1|integer',
            
         ]);
+
+       
 
         $proyecto = new Proyecto();
         $proyecto->name = $request->name;
@@ -105,6 +107,7 @@ class ProyectoController extends Controller
 
         $proyecto->save();
 
+        
         $historia = new Historia();
         $historia->name = $proyecto->name;
         $historia->fuente = $proyecto->fuente;

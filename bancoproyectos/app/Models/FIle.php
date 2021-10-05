@@ -9,7 +9,7 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $fillable =['detalle', 'tipo','url' ];
+    protected $fillable =['detalle', 'tipo','url', 'estado' ];
 
     // relacion muchos a muchos polimorfica (inversa
     

@@ -66,6 +66,7 @@ class DocumentosRevisionx extends Component
         $revision->files()->create([
             'tipo' => $this->fileName2->getMimeType(),
             'detalle' =>  $this->fileTipo,
+            'estado' => "Nuevo",
             'url' => $dataValid['fileName2']
 
         ]);

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DependenciaSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(RoleSeeder::class);
+        $this->call(TiposarchivosSeeder::class);
 
         \App\Models\Proyecto::factory(100)->create();
     }

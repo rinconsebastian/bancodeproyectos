@@ -33,6 +33,8 @@
 
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.1.4/dist/tailwind.min.css">
     <link rel="stylesheet" href="{{ asset('css/appb.css') }}">
+
+    
 </head>
 <body class="bg-gray-200">
     
@@ -185,6 +187,9 @@ input[type=number] {
   </div>    
 
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+  <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine-ie11.min.js" defer></script>
+
+  <script src="{{ asset('js/sweetalert2.all.min.js') }}" ></script>
   <script>
     const setup = () => {
       const getTheme = () => {
@@ -208,8 +213,11 @@ input[type=number] {
       }
     }
   </script>
+
+
   @yield('scriptsslot')
   
   @livewireScripts
+  
 </body>
 </html>
