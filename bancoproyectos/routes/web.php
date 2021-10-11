@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProyectoController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return redirect('/proyectos/');
@@ -30,3 +34,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->resource('/proyectos', ProyectoController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/proyectos/{estado}/listado', [ProyectoController::class, 'listado'])->name('proyectos.listado');
+
+Route::resource('users', UserController::class)->only(['index','edit','update'])->names('admin.users');
+
+Route::resource('roles', RoleController::class)->only(['index','edit','update','create','store','destroy'])->names('admin.roles');
+

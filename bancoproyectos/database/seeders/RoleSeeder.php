@@ -26,32 +26,38 @@ class RoleSeeder extends Seeder
 
 
        // create permissions
-       Permission::create(['name' => 'admin.users.index'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.users.create'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.users.edit'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.users.destroy'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.users.index','description'=>'Ver listado de usuarios'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.users.create','description'=>'Crear usuarios'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.users.edit','description'=>'Editar usuarios'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.users.update','description'=>'Asignar roles'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.users.destroy','description'=>'Eliminar usuarios'])->syncRoles([$role1]);
 
-       Permission::create(['name' => 'admin.dependencias.index'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.dependencias.create'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.dependencias.edit'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.dependencias.destroy'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.roles.index','description'=>'Ver listado de roles'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.roles.create','description'=>'Crear roles'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.roles.edit','description'=>'Editar roles'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.roles.destroy','description'=>'Eliminar roles'])->syncRoles([$role1]);
 
-       Permission::create(['name' => 'proyectos.index'])->syncRoles([$role2]);
-       Permission::create(['name' => 'proyectos.create'])->syncRoles([$role2]);
-       Permission::create(['name' => 'proyectos.edit'])->syncRoles([$role2]);
-       Permission::create(['name' => 'proyectos.destroy'])->syncRoles([$role2]);
+       Permission::create(['name' => 'admin.dependencias.index','description'=>'Ver listado de dependencias'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.dependencias.create','description'=>'Crear dependencias'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.dependencias.edit','description'=>'Editar dependencias'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.dependencias.destroy','description'=>'Eliminar dependneicas'])->syncRoles([$role1]);
 
-       Permission::create(['name' => 'proyectos.presentar'])->syncRoles([$role2]);
-       Permission::create(['name' => 'proyectos.aprobar'])->syncRoles([$role3]);
-       Permission::create(['name' => 'proyectos.devolver'])->syncRoles([$role3]);
-       Permission::create(['name' => 'proyectos.corregir'])->syncRoles([$role2]);
-       Permission::create(['name' => 'proyectos.rechazar'])->syncRoles([$role3]);
-       Permission::create(['name' => 'proyectos.eliminar'])->syncRoles([$role2]);
+       Permission::create(['name' => 'proyectos.index','description'=>'Ver listado de proyectos'])->syncRoles([$role2]);
+       Permission::create(['name' => 'proyectos.create','description'=>'Crear proyectos'])->syncRoles([$role2]);
+       Permission::create(['name' => 'proyectos.edit','description'=>'Editar proyectos'])->syncRoles([$role2]);
+       Permission::create(['name' => 'proyectos.destroy','description'=>'Eliminar proyectos'])->syncRoles([$role2]);
 
-       Permission::create(['name' => 'revisiones.index'])->syncRoles([$role2,$role3]);
-       Permission::create(['name' => 'revisiones.create'])->syncRoles([$role3]);
-       Permission::create(['name' => 'revisiones.edit'])->syncRoles([$role3]);
-       Permission::create(['name' => 'revisiones.destroy'])->syncRoles([$role3]);
+       Permission::create(['name' => 'proyectos.presentar','description'=>'Presentar Proyectos'])->syncRoles([$role2]);
+       Permission::create(['name' => 'proyectos.aprobar','description'=>'aprobar proyectos'])->syncRoles([$role3]);
+       Permission::create(['name' => 'proyectos.devolver','description'=>'Devolver proyectos'])->syncRoles([$role3]);
+       Permission::create(['name' => 'proyectos.corregir','description'=>'Corregir proyectos'])->syncRoles([$role2]);
+       Permission::create(['name' => 'proyectos.rechazar','description'=>'Rechazar proyectos'])->syncRoles([$role3]);
+       Permission::create(['name' => 'proyectos.eliminar','description'=>'Eliminar proyectos'])->syncRoles([$role2]);
+
+       Permission::create(['name' => 'revisiones.index','description'=>'Ver listado de revisiones'])->syncRoles([$role2,$role3]);
+       Permission::create(['name' => 'revisiones.create','description'=>'Crear revisiones'])->syncRoles([$role3]);
+       Permission::create(['name' => 'revisiones.edit','description'=>'Editar revisiones'])->syncRoles([$role3]);
+       Permission::create(['name' => 'revisiones.destroy','description'=>'Eliminar revisiones'])->syncRoles([$role3]);
 
        
 

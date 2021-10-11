@@ -2,7 +2,7 @@
    
     
        
-    <div class="grid grid-cols-1 lg:grid-cols-1 p-4 gap-4 h-5/6">
+    <div class="grid grid-cols-1 lg:grid-cols-1 p-3 gap-2 h-full">
     <!-- Borradores -->
     <x-marcotabla>
         <x-slot name='titulo'>{{$estado}} </x-slot>

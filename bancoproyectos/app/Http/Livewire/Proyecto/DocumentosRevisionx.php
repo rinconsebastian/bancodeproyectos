@@ -23,7 +23,7 @@ class DocumentosRevisionx extends Component
     public $edit;
     public $disponible = false;
 
-
+    protected $listeners = ['deleteFilerev'];
     public function render()
     {
         $revision = Revision::find($this->idRevision);
@@ -128,6 +128,45 @@ class DocumentosRevisionx extends Component
         return response()->download(storage_path("/app/public/". $doc->url),$nombre. "." .$extension);
 
 
+    }
+
+    public function deleteFilerev($ids)
+    {
+
+        $doc = File::find($ids);
+        $revision = $doc->Revisiones()->first();
+
+       
+        $devolver = in_array("proyectos.devolver",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+
+        if (($revision->estado == "Borrador" )   and  $devolver) {
+
+
+            $resultado = $doc->delete();
+
+            if ($resultado == true) {
+                $this->dispatchBrowserEvent('swal-modal', [
+                    'type' => 'success',
+                    'title' => 'Se ha borrado el archivo de forma exitosa',
+                    'text' => '',
+                    'confirmButtonColor' => '#3085d6',
+                ]);
+            } else {
+                $this->dispatchBrowserEvent('swal-modal', [
+                    'type' => 'error',
+                    'title' => 'Imposible borrar el archivo',
+                    'text' => '',
+                    'confirmButtonColor' => '#d33',
+                ]);
+            }
+        } else {
+            $this->dispatchBrowserEvent('swal-modal', [
+                'type' => 'error',
+                'title' => 'Imposible borrar el archivo',
+                'text' => '',
+                'confirmButtonColor' => '#d33',
+            ]);
+        }
     }
    
 

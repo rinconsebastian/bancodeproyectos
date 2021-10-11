@@ -23,7 +23,16 @@ class Documentos extends Component
     public $classUploadBtn = "bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
     public $disponible = false;
 
-    protected $listeners = ['deleteFile'];
+    public $authAprobarArchivo = false;
+    public $authRechazarArchivo = false;
+    public $last = false;
+
+
+    protected $listeners = ['deleteFile','gestionFile'];
+
+
+
+
 
     public function render()
     {
@@ -31,13 +40,32 @@ class Documentos extends Component
         $historia = Historia::find($this->idhistoria);
         $this->historiaestado = $historia->estado;
 
+        $lastHistoria = Historia::where('proyecto_id',$historia->proyecto_id)->orderBy('id',"DESC")->first();
+        if($lastHistoria->id == $historia->id){
+            $this->last = true;
+        }
+
         $presentar = in_array("proyectos.presentar", auth()->user()->getAllPermissions()->pluck('name')->toArray());
+        $aprobar = in_array("proyectos.aprobar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+        $devolver = in_array("proyectos.devolver",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+        $rechazar = in_array("proyectos.rechazar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+
+
+        If ($historia->estado == "Finalizada" && $historia->proyecto->estado == "Presentado") {
+
+            
+            $this->authAprobarArchivo = $aprobar ;
+            $this->authRechazarArchivo = $devolver;
+
+        }
 
 
         if (($historia->estado == "Borrador" or $historia->estado == "Ajustes") and $historia->proyecto->user_id == auth()->user()->id  and  $presentar) {
 
             $this->disponible = true;
         }
+
+
 
 
         $tipos = array("Seleccione");
@@ -168,5 +196,75 @@ class Documentos extends Component
                 'confirmButtonColor' => '#d33',
             ]);
         }
+    }
+
+    public function gestionFile($ids, $accion)
+    {
+        $exito = false;
+        $doc = File::find($ids);
+        $historia = $doc->Historias()->first();
+
+        $aprobar = in_array("proyectos.aprobar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+        $devolver = in_array("proyectos.devolver",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+        $rechazar = in_array("proyectos.rechazar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+
+        if ($historia->estado == "Finalizada" && $historia->proyecto->estado == "Presentado" && $doc != null) {
+        
+            if($accion == "Rechazar" && ($devolver || $rechazar)){
+
+                $doc->estado = "Rechazado";
+                $exito = $doc->save();
+
+                if($exito){
+                   
+                    $this->dispatchBrowserEvent('swal-modal', [
+                        'type' => 'success',
+                        'title' => 'Archivo rechazado',
+                        'text' => '',
+                        'confirmButtonColor' => '#d33',
+                    ]);
+                }else{
+                   
+                    $this->dispatchBrowserEvent('swal-modal', [
+                        'type' => 'error',
+                        'title' => 'Imposilbe rechazar el archivo',
+                        'text' => '',
+                        'confirmButtonColor' => '#d33',
+                    ]);
+                }
+
+            } elseif($accion == "Aprobar" && $aprobar){
+
+                
+                $doc->estado = "Aprobado";
+                $exito = $doc->save();
+
+                if($exito){
+                  
+                    $this->dispatchBrowserEvent('swal-modal', [
+                        'type' => 'success',
+                        'title' => 'Archivo Aprobado',
+                        'text' => '',
+                        'confirmButtonColor' => '#0b6e42',
+                    ]);
+                }
+                else{
+                   
+                    $this->dispatchBrowserEvent('swal-modal', [
+                        'type' => 'error',
+                        'title' => 'Imposilbe aprobar el archivo',
+                        'text' => '',
+                        'confirmButtonColor' => '#d33',
+                    ]);
+                }
+            }
+
+        }
+
+        
+        return redirect(request()->header('Referer'));
+
+
+
     }
 }

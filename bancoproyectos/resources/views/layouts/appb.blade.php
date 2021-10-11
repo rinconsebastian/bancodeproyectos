@@ -11,6 +11,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0ed3cf">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta name="msapplication-TileColor" content="#0ed3cf">
     <meta name="theme-color" content="#0ed3cf">
 
@@ -36,7 +38,7 @@
 
     
 </head>
-<body class="bg-gray-200">
+<body class="bg-white">
     
     <style>
 
@@ -179,7 +181,7 @@ input[type=number] {
     
       <livewire:sidemenu />
     
-      <div class="h-fit ml-14 mt-14 mb-10 md:ml-64">
+      <div class="h-full ml-14 mt-14 mb-0 pb-0 md:ml-64">
     
         {{ $slot }}
       </div>

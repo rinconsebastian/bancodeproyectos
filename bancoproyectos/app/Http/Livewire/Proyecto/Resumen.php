@@ -21,6 +21,8 @@ class Resumen extends Component
     public $autheliminar = false;
     public $authrechazar = false;
 
+    protected $listeners = ['transicion'];
+
     public function render()
     {
         $presentar = in_array("proyectos.presentar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
@@ -113,6 +115,12 @@ class Resumen extends Component
            
            break;
                 case 'devolver':
+                $historia = Historia::where('proyecto_id',$this->idproyecto);
+                $revisiones = Revision::where('historia_id',$historia->id)->where('estad',"Borrador")->get();
+                foreach($revisiones as $revisionn){
+                    $revisionn->estado = "Finalizada";
+                    $revisionn->save();
+                }
                 $nuevoEstado = "Devuelto";
                 break;
                 case 'corregir':

@@ -29,14 +29,18 @@ class ShowProyectos extends Component
                 ->where('estado', 'like', '%' . $this->estado . '%')
                 ->where('user_id', $this->usuario)
                 ->orderBy($this->sort, $this->direction)
-                ->get();
+                ->paginate(8);
         } else {
             $proyectos = Proyecto::where('name', 'like', '%' . $this->search . '%')
                 ->where('estado', 'like', '%' . $this->estado . '%')
                 ->orderBy($this->sort, $this->direction)
-                ->get();
+                ->paginate(8);
         }
         return view('livewire.tables.show-proyectos', compact('proyectos'));
+    }
+
+    public function updatingSearch(){
+        $this->resetPage();
     }
 
     public function order($sort){
