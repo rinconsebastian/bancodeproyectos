@@ -174,14 +174,13 @@
                                         class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
                                         name="sector" id="sector" placehoder="seleccione">
                                         <option hidden selected value="">Seleccione un sector</option>
-                                        <option {{ old('sector') == 'Público' ? 'selected' : '' }} value="Público">
-                                            Público</option>
-                                        <option {{ old('sector') == 'Privado' ? 'selected' : '' }} value="Privado">
-                                            Privado</option>
-                                        <option {{ old('sector') == 'Alianza publico privada<' ? 'selected' : '' }}
-                                            value="Alianza publico privada">Alianza publico privada</option>
-                                        <option {{ old('sector') == 'Regalías' ? 'selected' : '' }} value="Regalías">
-                                            Regalías</option>
+                                        @foreach ($sectores as $sector)
+                                        <option {{ old('sector') == $sector ? 'selected' : '' }} value="{{$sector}}">
+                                            {{$sector}}</option>
+                                        @endforeach
+                                        
+                                        
+
 
                                     </select>
                                     @error('sector')

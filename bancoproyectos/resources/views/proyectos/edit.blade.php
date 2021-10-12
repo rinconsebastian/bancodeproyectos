@@ -96,10 +96,14 @@
                                 class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
                                 name="sector" id="sector" placehoder="seleccione" value="{{$proyecto->sector}}"  >
                                 <option hidden selected value="">Seleccione un sector</option>
-                                <option  {{$proyecto->sector == "Público" ? "selected" : ""}} value="Público">Público</option>
-                                <option {{$proyecto->sector == "Privado" ? "selected" : ""}} value="Privado">Privado</option>
-                                <option  {{$proyecto->sector == "Alianza publico privada" ? "selected" : ""}} value="Alianza publico privada">Alianza publico privada</option>
-                                <option  {{$proyecto->sector == "Regalías" ? "selected" : ""}} value="Regalías">Regalías</option>
+                                
+                                @foreach ($sectores as $sector)
+                                
+                                <option  {{$proyecto->sector == $sector ? "selected" : ""}} value="{{$sector}}">{{$sector}}</option>
+
+
+                                @endforeach
+
 
                             </select>
                             @error('sector')

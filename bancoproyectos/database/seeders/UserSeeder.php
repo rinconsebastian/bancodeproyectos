@@ -16,18 +16,34 @@ class UserSeeder extends Seeder
     public function run()
     {
     
-        $user = new User();
+    $user = new User();
     $user->name = "administrador defecto";
     $user->email = "admin@admin.com";
     $user->password = bcrypt("admin123");
     $user->email_verified_at = now();
     $remember_token = "asfsrtertr";
     $user->dependencia_id = Dependencia::take(1)->first()->id;
-    
-
     $user->save();
 
-    User::factory(20)->create();
+    $user = new User();
+    $user->name = "Wilson Sanchez";
+    $user->email = "wesanchezh@gmail.com";
+    $user->password = bcrypt("admin123");
+    $user->email_verified_at = now();
+    $remember_token = "asfsrtertr";
+    $user->dependencia_id = Dependencia::take(1)->first()->id;
+    $user->save();
+
+    $user = new User();
+    $user->name = "Maria antonia Barajas";
+    $user->email = "mariantoniabarajas@gmail.com";
+    $user->password = bcrypt("admin123");
+    $user->email_verified_at = now();
+    $remember_token = "asfsrtertr";
+    $user->dependencia_id = Dependencia::take(1)->first()->id;
+    $user->save();
+
+   // User::factory(20)->create();
 
     }
 }
