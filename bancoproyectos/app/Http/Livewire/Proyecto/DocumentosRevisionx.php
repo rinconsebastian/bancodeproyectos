@@ -28,10 +28,7 @@ class DocumentosRevisionx extends Component
     {
         $revision = Revision::find($this->idRevision);
 
-        $tipos = array("Seleccione"); 
-        
-        $tipos = array_merge($tipos,Tiposarchivos::where('grupo','revision')->pluck('texto','texto')->toarray());
-
+       
         $devolver = in_array("proyectos.devolver",auth()->user()->getAllPermissions()->pluck('name')->toArray());
         //$tipos = Tiposarchivos::where('grupo','proyecto')->pluck('texto','texto');
 
@@ -42,6 +39,14 @@ class DocumentosRevisionx extends Component
 
 
         $documentos = $revision->files;
+
+
+        $tiposdoc = $documentos->pluck('detalle');
+        
+        $tipos = array("Seleccione"); 
+        
+        $tipos = array_merge($tipos,Tiposarchivos::where('grupo','revision')->whereNotIn('texto', $tiposdoc)->pluck('texto','texto')->toarray());
+
         return view('livewire.proyecto.documentos-revisionx', compact('documentos','tipos'));
     }
 
@@ -49,7 +54,7 @@ class DocumentosRevisionx extends Component
     {
         $dataValid = $this->validate([
             'fileTipo' => 'required',
-            'fileName2' => 'required|mimes:pdf,jpg,jpeg,png,svg,xls,xlsx,xlsm,doc,docx,docm,zip,rar,dwg|max:20480',
+            'fileName2' => 'required|max:200000',
         ]);
   
         $revision = Revision::find($this->idRevision);
@@ -92,7 +97,7 @@ class DocumentosRevisionx extends Component
     {
         $dataValid = $this->validate([
             'fileTipo' => 'required',
-            'fileName2' => 'required|mimes:pdf,jpg,jpeg,png,svg,xls,xlsx,xlsm,doc,docx,docm,zip,rar,dwg|max:20480',            
+            'fileName2' => 'required|max:200000',            
         ]);
        
         $this->nombreDoc2 = $this->fileName2->getClientOriginalName();

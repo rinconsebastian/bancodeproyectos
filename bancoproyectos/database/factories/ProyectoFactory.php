@@ -28,6 +28,7 @@ class ProyectoFactory extends Factory
         'fase' => $this->faker->randomElement(['I','II','III','IV']),
         'valor' => $this->faker->randomNumber(8),
         'sector' => $this->faker->randomElement(['Salud','Educación','Infraestrcutura','Mobiliario','Vías']),
+        'registro' => $this->faker->randomElement(['reg.pdf']),
         'tiempo' => random_int(1,48),
         'estado' =>$this->faker->randomElement(['Borrador','Presentado','Revision','Devuelto','Aprobado',"Rechazado"]),
         'user_id' => User::inRandomOrder()->take(1)->first()->id

@@ -68,13 +68,19 @@ class Documentos extends Component
 
 
 
-        $tipos = array("Seleccione");
-
-        $tipos = array_merge($tipos, Tiposarchivos::where('grupo', 'proyecto')->pluck('texto', 'texto')->toarray());
-
+        
         //$tipos = Tiposarchivos::where('grupo','proyecto')->pluck('texto','texto');
 
         $documentos = $historia->files;
+
+
+        $tiposdoc = $documentos->pluck('detalle');
+
+        $tipos = array("Seleccione");
+
+        $tipos = array_merge($tipos, Tiposarchivos::where('grupo', 'proyecto')->whereNotIn('texto', $tiposdoc)->pluck('texto', 'texto')->toarray());
+
+
         return view('livewire.proyecto.documentos', compact('documentos', 'tipos'));
     }
 
@@ -82,7 +88,7 @@ class Documentos extends Component
     {
         $dataValid = $this->validate([
             'fileTitle' => 'required',
-            'fileName' => 'required|mimes:pdf,jpg,jpeg,png,svg,xls,xlsx,xlsm,doc,docx,docm,zip,rar,dwg|max:20480',
+            'fileName' => 'required|max:200000',
         ]);
 
         $historia = Historia::find($this->idhistoria);
@@ -125,7 +131,7 @@ class Documentos extends Component
     {
         $dataValid = $this->validate([
             'fileTitle' => 'required',
-            'fileName' => 'required|mimes:pdf,jpg,jpeg,png,svg,xls,xlsx,xlsm,doc,docx,docm,zip,rar,dwg|max:20480',
+            'fileName' => 'required|max:200000',
         ]);
 
         $this->nombreDoc = $this->fileName->getClientOriginalName();

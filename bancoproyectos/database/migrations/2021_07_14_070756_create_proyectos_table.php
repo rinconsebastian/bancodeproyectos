@@ -22,6 +22,7 @@ class CreateProyectosTable extends Migration
             $table->string('sector');
             $table->integer('tiempo');
             $table->string('estado');
+            $table->string('registro');
             $table->unsignedBigInteger('user_id');
 
             $table->foreign("user_id")
