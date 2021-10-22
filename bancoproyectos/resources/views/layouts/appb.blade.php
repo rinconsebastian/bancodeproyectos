@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -22,16 +21,16 @@
     <meta property="og:image:type" content="image/png" />
 
     <meta property="og:url" content="https://tailwindcomponents.com/component/responsive-admin-template/landing" />
-    <meta property="og:title" content="Admin Dashboard along with dark mode &amp; responsive sidebar by Robin Hossain" />
-    <meta property="og:description" content="Admin template with responsive sidebar along with several responsive components. It has both light &amp; dark mode." />
+    <meta property="og:title" content="Banco de proyectos Tuta" />
+    <meta property="og:description" content="Banco de proyectos Tuta" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@TwComponents" />
-    <meta name="twitter:title" content="Admin Dashboard along with dark mode &amp; responsive sidebar by Robin Hossain" />
-    <meta name="twitter:description" content="Admin template with responsive sidebar along with several responsive components. It has both light &amp; dark mode." />
+    <meta name="twitter:title" content="Banco de proyectos Tuta" />
+    <meta name="twitter:description" content="Banco de proyectos Tuta" />
     <meta name="twitter:image" content="https://tailwindcomponents.com/storage/3891/conversions/temp52362-ogimage.jpg?v=2021-07-23 12:21:45" />
 
-    <title>Admin Dashboard along with dark mode &amp; responsive sidebar by Robin Hossain. </title>
+    <title>Banco de proyectos Tuta</title>
 
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.1.4/dist/tailwind.min.css">
     <link rel="stylesheet" href="{{ asset('css/appb.css') }}">

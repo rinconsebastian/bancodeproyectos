@@ -80,6 +80,7 @@ class ProyectoController extends Controller
         $proyecto->sector = $request->sector;
         $proyecto->tiempo = $request->tiempo;
         $proyecto->estado = "Borrador";
+        $proyecto->registro = "";
         $proyecto->user_id = Auth::id();
 
 

@@ -30,7 +30,7 @@ class Resumen extends Component
     public $fileclass = "text-gray-600 hover:text-black cursor-pointer border-gray-500";
     
     public $classUploadBtn = "bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
-    
+    public $fileTitle, $fileName;
 
     protected $listeners = ['transicion'];
 
@@ -60,6 +60,11 @@ class Resumen extends Component
                 $this->authcreardevolucion = $devolver;
                 $this->authrechazar = $rechazar;
                 break;
+
+                case 'Registrado':
+                    $this->color = "bg-green-800";
+                    $this->authregistrar = $registrar;
+                    break;
 
             case 'Revisión':
                 $this->color = "bg-blue-800";
@@ -107,7 +112,21 @@ class Resumen extends Component
         switch ($proceso) {
             case 'presentar':
                 if ($this->authpresentar and ($proyecto->estado == "Borrador" or $proyecto->estado == "Ajustes")) {
-                    $nuevoEstado = "Presentado";
+                   
+                    $historia = Historia::where('proyecto_id', $this->idproyecto)
+                    ->orderBy('id', 'DESC')->first();
+                    if($historia != null){
+                        $files = $historia->files();
+                            if($files->count() > 0){
+                                $nuevoEstado = "Presentado";
+                            }else{
+                                session()->flash('error', 'no se pueden presentar proyectos sin archivos');
+                            }
+                    }  else{
+                        session()->flash('error', 'el proyecto no tiene una historia, reporte esta falla técnica');
+                    }                  
+                    
+                    
                 }
                 break;
             case 'creardevolucion';
@@ -116,28 +135,55 @@ class Resumen extends Component
                     $historia = Historia::where('proyecto_id', $this->idproyecto)
                         ->orderBy('id', 'DESC')->first();
 
-                    $revision = new Revision();
-                    $revision->estado = "Borrador";
-                    $revision->historia_id = $historia->id;
 
-                    $revision->save();
-                    $historia->proyecto->estado = "Revisión";
-                    $historia->proyecto->save();
+                        if($historia != null){
+                            $files = $historia->files()->where('estado','Nuevo');
+                                  
+                            if($files->count() > 0){
+                                    session()->flash('error', 'Debe revisar todos los documentos anexos para poder rechazar el proyectos');
+                                }else{
+                                    $revision = new Revision();
+                                    $revision->estado = "Borrador";
+                                    $revision->historia_id = $historia->id;
+                
+                                    $revision->save();
+                                    $historia->proyecto->estado = "Revisión";
+                                    $historia->proyecto->save();
+                
+                                    return redirect()->route('proyectos.show', $this->idproyecto);
+                                    
+                                }
+                        }  else{
+                            session()->flash('error', 'el proyecto no tiene una historia, reporte esta falla técnica');
+                        }    
 
-                    return redirect()->route('proyectos.show', $this->idproyecto);
+                    
                 }
 
                 break;
             case 'devolver':
+                $falla = false;
                 $historias = Historia::where('proyecto_id', $proyecto->id)->get();
                 foreach ($historias as $historia) {
                     $revisiones = Revision::where('historia_id', $historia->id)->where('estado', "Borrador")->get();
                     foreach ($revisiones as $revisionn) {
-                        $revisionn->estado = "Finalizada";
-                        $revisionn->save();
+                        $files = $revisionn->files();
+                        if($files->count() > 0 |  $revisionn->detalle != null |$revisionn->detalle != "")
+                        {
+                            $revisionn->estado = "Finalizada";
+                            $revisionn->save();
+                        }else{
+                            $falla = true;
+                        }
+                        
                     }
                 }
+                if($falla == false){
                 $nuevoEstado = "Devuelto";
+            }else{
+                session()->flash('error', 'Escriba una nota o anexe un documento para devolver el proyecto');
+            }
+
                 break;
             case 'corregir':
 
@@ -148,12 +194,31 @@ class Resumen extends Component
                 break;
             case 'aprobar':
                 if ($this->authaprobar and $proyecto->estado == "Presentado") {
-                    $nuevoEstado = "Aprobado";
+                    
+                    $historia = Historia::where('proyecto_id', $this->idproyecto)
+                    ->orderBy('id', 'DESC')->first();
+                    if($historia != null){
+                        $files = $historia->files()->where('estado','Nuevo');
+                            if($files->count() > 0){
+                                session()->flash('error', 'Debe revisar todos los documentos anexos para poder aprobar el proyectos');
+                            }else{
+                                $nuevoEstado = "Aprobado";
+                                
+                            }
+                    }  else{
+                        session()->flash('error', 'el proyecto no tiene una historia, reporte esta falla técnica');
+                    }     
+                    
+                   
                 }
                 break;
             case 'rechazar':
                 if ($this->authrechazar and $proyecto->estado == "Presentado") {
-                    $nuevoEstado = "Rechazado";
+                  
+                   $nuevoEstado = "Rechazado";
+                                
+                     
+                 
                 }
                 break;
             case 'eliminar':
@@ -196,6 +261,9 @@ class Resumen extends Component
 
     public function updatedfileName()
     {
+
+//        session()->flash('message', 'anexo');
+
         $dataValid = $this->validate([
             'fileName' => 'required|max:200000',
         ]);
@@ -203,5 +271,42 @@ class Resumen extends Component
         
         $this->statusUploadBtn = "";
         $this->classUploadBtn = "bg-green-700 text-green-100 hover:bg-green-800 border-gray-500";
+    }
+
+    public function submit()
+    {
+       
+
+        $dataValid = $this->validate([
+            
+            'fileName' => 'required|max:200000',
+        ]);
+
+        $proyecto = Proyecto::find($this->idproyecto);
+
+        //$dataValid['fileName'] = $this->fileName->store($historia->proyecto_id, 'public');
+        $dataValid['fileName'] = $this->fileName->store('Proyectos/' . $proyecto->id, 'public');
+
+
+        $proyecto->registro = $dataValid['fileName'];
+        $proyecto->estado = "Registrado";
+        $proyecto->save();
+
+
+
+       $this->statusUploadBtn = "disabled";
+       $this->classUploadBtn = "bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
+
+        //$this->fileclass = "cursor-not-allowed";
+        //$this->filenabled = "disabled";
+
+        $this->fileName = null;
+        $this->nombreDoc = "Click Si necesita remplazar el registro";
+
+
+        //$this->addError('fileName', 'el campo es requerido');
+
+       session()->flash('message', 'Registro del proyecto actualizado');
+
     }
 }
