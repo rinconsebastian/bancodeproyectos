@@ -181,7 +181,7 @@
                 {{$proyectos->links()}}
             </div>
         @else
-            <div px 6 py-4>No existe ningun proyecto coincidente</div>
+            <div class="px-6 py-4 text-gray-400  italic text-center ">No existe ningun proyecto coincidente</div>
         @endif
 
 </div>

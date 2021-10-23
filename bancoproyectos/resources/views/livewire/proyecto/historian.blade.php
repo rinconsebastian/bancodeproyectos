@@ -8,10 +8,10 @@
 @endphp
 <div>
 
-    <div x-data="{animate:{{$open}}}" class="mt-1 " >
+    <div x-data="{animate:{{$open}}}" class="mt-0 mb-1 " >
 
         <div @click="animate = (animate) ? false : true"
-            class="cursor-pointer  grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 {{$estilocabecera}} sm:rounded-lg mr-2  px-3  py-2 ">
+            class="cursor-pointer  grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 {{$estilocabecera}} sm:rounded-sm mr-0  px-3  pt-0 pb-2">
 
             <div class="md:col-span-2 lg:col-span-2 xl:col-span-2">
                 <h2 class="text-sm font-bold ">Versión {{ $n }}</h2>

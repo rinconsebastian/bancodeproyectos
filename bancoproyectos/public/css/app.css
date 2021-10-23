@@ -2239,3 +2239,24 @@ select {
 	background-color: #3258c7;
 }
 
+.activemenu{ 
+	background-color: #3258c7;
+}
+
+.h-tabla{
+	height: calc(100% - 87px);
+}
+
+.h-tabla2{
+	height: calc(100% - 40px);
+}
+
+.h-tabla3{
+	height: calc(100% - 195px);
+}
+
+.orange{
+	background-color: orange;
+	color: white !important;
+	font-weight: bold !important;
+}

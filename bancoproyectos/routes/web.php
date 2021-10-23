@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->resource('/proyectos', Proyecto
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/proyectos/{estado}/listado', [ProyectoController::class, 'listado'])->name('proyectos.listado');
 
-Route::resource('users', UserController::class)->only(['index','edit','update'])->names('admin.users');
+Route::resource('users', UserController::class)->only(['index','edit','update','create','store'])->names('admin.users');
 
 Route::resource('roles', RoleController::class)->only(['index','edit','update','create','store','destroy'])->names('admin.roles');
 

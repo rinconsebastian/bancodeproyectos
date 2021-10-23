@@ -14,6 +14,7 @@ class RoleController extends Controller
     {
         $this->middleware('can:admin.roles.edit')->only('edit', 'update');
         $this->middleware('can:admin.roles.destroy')->only('destroy');
+        $this->middleware('can:admin.roles.create')->only('creeate','store');
       
         $this->middleware('can:admin.roles.index')->only('index');
     }
@@ -21,7 +22,10 @@ class RoleController extends Controller
 
     public function index()
     {
-        return view('admin.roles.index');
+        $crear = in_array("admin.roles.create", auth()->user()->getAllPermissions()->pluck('name')->toArray());
+       
+       
+        return view('admin.roles.index',compact('crear'));
     }
 
     /**

@@ -19,3 +19,9 @@
 .h-tabla3{
 	height: calc(100% - 195px);
 }
+
+.orange{
+	background-color: orange;
+	color: white !important;
+	font-weight: bold !important;
+}

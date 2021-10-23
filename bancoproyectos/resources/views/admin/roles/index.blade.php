@@ -14,9 +14,10 @@
     <!-- Borradores -->
     <x-marcotabla>
         <x-slot name='titulo'>Lista de roles </x-slot>
+        @if($crear)
         <x-slot name='botonAccion'>href="{{route('admin.roles.create') }}"</x-slot>
         <x-slot name='boton'>Nuevo rol</x-slot>
-        
+        @endif        
 
         @livewire('admin.roles-index')
         

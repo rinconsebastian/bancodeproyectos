@@ -4,7 +4,7 @@
         $num = $total;
         $open = "false";
     @endphp
-    <div class="w-full  mx-auto shadow-md">
+    <div class="w-full  mx-auto shadow-md card">
 
         @foreach ($historias as $historia)
             @php

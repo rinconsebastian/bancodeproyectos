@@ -95,7 +95,7 @@
 
 
                         <td class="px-2 py-0  text-right text-sm font-medium">
-                            <a class="btn btn-primary btn-sm py-0" href="{{route('admin.users.edit',$user)}}">Asignar rol</a>
+                            <a class="btn btn-primary btn-sm py-0" href="{{route('admin.users.edit',$user)}}">Editar</a>
                         </td>
                     </tr>
                     @php

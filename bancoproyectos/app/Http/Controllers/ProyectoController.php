@@ -14,14 +14,26 @@ class ProyectoController extends Controller
     {
         $this->middleware('can:proyectos.create')->only('create', 'store');
         $this->middleware('can:proyectos.edit')->only('edit', 'update');
+        
+
     }
+
+       
 
     public function index()
     {
 
+        $formulador = in_array("proyectos.presentar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+        $evaluador = in_array("proyectos.aprobar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+        $registrador = in_array("proyectos.registrar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
+
+
+        
+        $total = $formulador +$evaluador +$registrador;
+
         $proyectos = Proyecto::all();
 
-        return view('proyectos.index', compact('proyectos'));
+        return view('proyectos.index', compact('proyectos','formulador','evaluador','registrador','total'));
     }
 
 

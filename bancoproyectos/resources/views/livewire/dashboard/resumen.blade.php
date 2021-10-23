@@ -78,7 +78,7 @@
                 </svg>
             </div>
             <div class="text-right">
-                <p class="text-2xl">  @livewire('proyecto.cuentaresumen',['estado' => 'Ajustes' ,'usuario' => Auth::user()->id ])</p>
+                <p class="text-2xl">  @livewire('proyecto.cuentaresumen',['estado' => 'Devuelto' ,'usuario' => Auth::user()->id ])</p>
                 <p>Devueltos</p>
             </div>
         </div>

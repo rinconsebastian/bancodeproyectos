@@ -9,20 +9,20 @@
     {{ session('error') }}
 </div>
 @endif
-    <div class="p-3 mr-1 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
+    <div class="p-0 mr-1 bg-gray-100 dark:bg-gray-800 sm:rounded-lg card">
 
-        <div class="flex flex-wrap" id="tabs-id">
+        <div class="flex flex-wrap " id="tabs-id">
             <div class="w-full">
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4  p-0 gap-0 mb-2">
+                <div class="py-1 px-3 grid text-xs grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4  p-0 gap-0 mb-2 card-header">
                     <h1
-                        class="md:col-span-3 lg:col-span-3 xl:col-span-3 text-3xl sm:text-2xl text-black dark:text-white font-bold tracking-tight uppercase">
+                        class="md:col-span-3 lg:col-span-3 xl:col-span-3 text-lg sm:text-lg lg:text-2xl xl:text-2xl text-black dark:text-white font-bold tracking-tight uppercase">
                         {{ $proyecto->name }}</h1>
                     <h2 class="text-center {{ $color }} text-white rounded-md font-bold pt-1 shadow-lg ">
                         {{ $proyecto->estado }}</h2>
                 </div>
-                <ul class=" w-6/12 flex mb-0 list-none flex-wrap pt-1 pb-1 flex-row">
+                <ul class="px-3 sm:w-full lg:w-full xl:w-8/12 flex mb-0 list-none flex-wrap pt-1 pb-1 flex-row">
                     <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
-                        <a class="text-xs font-bold uppercase px-5 py-1 shadow-lg rounded block leading-normal text-white bg-blue-900"
+                        <a class="text-xs font-bold uppercase sm:px-1 sm:text-base lg:px-5 py-1 shadow-lg rounded block leading-normal text-white bg-blue-900"
                             onclick="changeAtiveTab(event,'tab-profile')">
                             <span class="inline-flex justify-center items-center ml-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="-mb-px mr-2 last:mr-0 flex-auto text-center  cursor-pointer">
-                        <a class="text-xs font-bold uppercase px-5 py-1 shadow-lg rounded block leading-normal text-blue-900 bg-white"
+                        <a class="text-xs font-bold uppercase lg:px-5 sm:px-1 sm:text-base py-1 shadow-lg rounded block leading-normal text-blue-900 bg-white"
                             onclick="changeAtiveTab(event,'tab-settings')">
                             <span class="inline-flex justify-center items-center ml-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -52,8 +52,8 @@
                     </li>
 
                 </ul>
-                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-1 shadow-lg rounded">
-                    <div class="px-4 py-1 flex-auto">
+                <div class="ml-4 mr-4 mb-3 relative flex flex-col min-w-0 break-words bg-white  shadow-lg rounded">
+                    <div class="px-0 py-1 flex-auto">
                         <div class="tab-content tab-space">
                             <div class="block" id="tab-profile">
                                 <div
@@ -64,7 +64,7 @@
                                     <div class="md:col-span-9 lg:col-span-10 xl:col-span-11 ">
 
                                         <div
-                                            class="grid grid-cols-2 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 p-0 gap-0 my-5">
+                                            class="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 p-0 gap-0 my-5">
 
                                             <div class="grid items-center mt-4 text-gray-600 dark:text-gray-400">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class=" text-black h-10 w-full"
