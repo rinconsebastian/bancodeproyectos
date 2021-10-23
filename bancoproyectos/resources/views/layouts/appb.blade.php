@@ -30,7 +30,7 @@
     <meta name="twitter:description" content="Banco de proyectos Tuta" />
     <meta name="twitter:image" content="https://tailwindcomponents.com/storage/3891/conversions/temp52362-ogimage.jpg?v=2021-07-23 12:21:45" />
 
-    <title>Banco de proyectos Tuta</title>
+    <title>{{ config('app.name') }}</title>
 
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.1.4/dist/tailwind.min.css">
     <link rel="stylesheet" href="{{ asset('css/appb.css') }}">

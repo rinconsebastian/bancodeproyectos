@@ -23,17 +23,22 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/proyectos/');
 })->name('dashboard');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/proyectos/');
 })->name('dashboard');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/proyectos/reporte', [ProyectoController::class, 'reporte'])->name('proyectos.reporte');
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('/proyectos', ProyectoController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/proyectos/{estado}/listado', [ProyectoController::class, 'listado'])->name('proyectos.listado');
+
+
 
 Route::resource('users', UserController::class)->only(['index','edit','update','create','store'])->names('admin.users');
 

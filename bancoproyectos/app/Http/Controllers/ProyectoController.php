@@ -178,8 +178,16 @@ class ProyectoController extends Controller
     {
 
 
-
-
+        
         return view('proyectos.listado', compact('estado'));
+    }
+
+
+    public function reporte()
+    {
+
+
+      
+        return view('proyectos.reporte');
     }
 }

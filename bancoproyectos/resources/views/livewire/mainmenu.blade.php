@@ -9,8 +9,8 @@
         </div>
         <div class="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
             <!-- Busqueda -->
-           <h1 class=" font-bold   text-lg text-center w-3/4">
-                BANCO DE PROYECTOS DE TUTA BOYACÁ
+           <h1 class=" font-bold   text-lg text-center w-3/4 uppercase">
+            {{ config('app.name') }}
             </h1>
             <ul class="flex items-center  ">
                 <!-- cambio de tema -->
