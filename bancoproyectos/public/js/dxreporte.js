@@ -118,7 +118,7 @@ var funcLE = {
                         $("<div>").html(info.column.caption.replace(/\r\n/g, "<br/>")).appendTo(header);
                     },
                     alignment: "left",
-                    width: '120',
+                    width: '220',
                     hidingPriority: 5
                 },
                 {
@@ -128,7 +128,7 @@ var funcLE = {
                         $("<div>").html(info.column.caption.replace(/\r\n/g, "<br/>")).appendTo(header);
                     },
                     alignment: "left",
-                    width: '120',
+                    width: '180',
                     hidingPriority: 5
                 },
                 {
@@ -167,7 +167,7 @@ var funcLE = {
                     dataField: "valor",
                     caption: "Valor",
                     dataType: "number",
-                    width: 90,
+                    width: 150,
                     alignment: "right",
                     format: "currency",
                     editorOptions: {
