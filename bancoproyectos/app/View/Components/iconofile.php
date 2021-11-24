@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class iconofile extends Component
+class Iconofile extends Component
 {
 
     public $type;
