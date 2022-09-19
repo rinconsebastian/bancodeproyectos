@@ -128,7 +128,7 @@ var funcLE = {
                         $("<div>").html(info.column.caption.replace(/\r\n/g, "<br/>")).appendTo(header);
                     },
                     alignment: "left",
-                    width: '180',
+                    width: '130',
                     hidingPriority: 5
                 },
                 {
@@ -159,7 +159,7 @@ var funcLE = {
                         $("<div>").html(info.column.caption.replace(/\r\n/g, "<br/>")).appendTo(header);
                     },
                     alignment: "left",
-                    width: '120',
+                    width: '70',
                     hidingPriority: 5
                 },
               
@@ -167,7 +167,7 @@ var funcLE = {
                     dataField: "valor",
                     caption: "Valor",
                     dataType: "number",
-                    width: 150,
+                    width: 120,
                     alignment: "right",
                     format: "currency",
                     editorOptions: {
@@ -212,7 +212,7 @@ var funcLE = {
                     dataField: "updated_at",
                     caption: "Fecha",
                     alignment: "center",
-                    width: '100',
+                    width: '90',
                     hidingPriority: 9,
                     dataType: "date",
                     calculateFilterExpression: function (value, selectedFilterOperations, target) {
@@ -223,7 +223,16 @@ var funcLE = {
                     }
                 },
 
-                
+                {
+                    dataField: "bpin",
+                    caption: "BPIN",
+                    headerCellTemplate: function (header, info) {
+                        $("<div>").html(info.column.caption.replace(/\r\n/g, "<br/>")).appendTo(header);
+                    },
+                    alignment: "center",
+                    width: '100',
+                    hidingPriority: 10
+                },
                 {
                     
                     caption: "Opciones",

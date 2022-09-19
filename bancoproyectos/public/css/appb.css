@@ -48,3 +48,7 @@
 #dataGrid {
     height: 500px;
 }
+
+.width-full{
+	width: 100%;
+}

@@ -2264,3 +2264,7 @@ select {
 	color: white !important;
 	font-weight: bold !important;
 }
+
+.width-full{
+	width: 100%;
+}

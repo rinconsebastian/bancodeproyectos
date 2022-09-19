@@ -90,6 +90,22 @@
                             @endif
                         </th>
                         <th scope="col"
+                            class="cursor-pointer  px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
+                            wire:click="order('bpin')">
+                            BPIN
+
+                            {{-- Sort--}}
+                            @if ($sort == 'bpin')
+                                @if ($direction == 'asc')
+                                    <i class="fas fa-sort-alpha-up-alt float-right mt-1"></i>
+                                @else
+                                    <i class="fas fa-sort-alpha-down-alt float-right mt-1"></i>
+                                @endif
+                            @else
+                                <i class="fas fa-sort float-right mt-1"></i>
+                            @endif
+                        </th>
+                        <th scope="col"
                             class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
                             wire:click="order('sector')">
                             Sector
@@ -152,9 +168,13 @@
                                 {{ "$" . number_format($proyecto->valor, 2, ',', '.') }}
 
                             </td>
+                            <td class="px-2 py-0 text-gray-500">
+                                {{ $proyecto->bpin }}
+                            </td>
                             <td class="px-2 py-0 text-sm text-gray-500">
                                 {{ $proyecto->sector }}
                             </td>
+                           
                             @if ($displayestado == true)
                             <td class="px-2 py-0 whitespace-nowrap">
                                 <span

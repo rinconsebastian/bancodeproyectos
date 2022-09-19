@@ -93,6 +93,8 @@ class ProyectoController extends Controller
         $proyecto->tiempo = $request->tiempo;
         $proyecto->estado = "Borrador";
         $proyecto->registro = "";
+        $proyecto->registronombre = "";
+        $proyecto->bpin = "";
         $proyecto->user_id = Auth::id();
 
 
@@ -106,6 +108,9 @@ class ProyectoController extends Controller
         $historia->sector = $proyecto->sector;
         $historia->tiempo = $proyecto->tiempo;
         $historia->estado = $proyecto->estado;
+        $historia->registro = $proyecto->registro;
+        $historia->registronombre = $proyecto->registronombre;
+        $historia->bpin = $proyecto->bpin;
         $historia->proyecto_id = $proyecto->id;
 
         
@@ -152,6 +157,9 @@ class ProyectoController extends Controller
         $proyecto->sector = $request->sector;
         $proyecto->tiempo = $request->tiempo;
         $proyecto->estado = "Ajustes";
+        $proyecto->registro =  $proyecto->registro;
+        $proyecto->registronombre = $proyecto->registronombre;
+        $proyecto->bpin = $proyecto->bpin;
         $proyecto->user_id = Auth::id();
 
 
@@ -167,7 +175,9 @@ class ProyectoController extends Controller
         $historia->tiempo = $proyecto->tiempo;
         $historia->estado = $proyecto->estado;
         $historia->proyecto_id = $proyecto->id;
-
+        $historia->bpin = $proyecto->bpin;
+        $historia->registro = $proyecto->registro;
+        $historia->registronombre = $proyecto->registronombre;
 
         $historia->save();
 

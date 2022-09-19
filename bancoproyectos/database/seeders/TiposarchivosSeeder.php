@@ -46,12 +46,7 @@ class TiposarchivosSeeder extends Seeder
        $tipo3->save();
        $n = $n + 1;
 
-       $tipo03 = new Tiposarchivos();
-       $tipo03->id = $n;
-       $tipo03->grupo = "proyecto";
-       $tipo03->texto = "Proyecto Formulado en Metodología MGA";
-       $tipo03->save();
-       $n = $n + 1;
+      
 
        $tipo4 = new Tiposarchivos();
        $tipo4->id = $n;

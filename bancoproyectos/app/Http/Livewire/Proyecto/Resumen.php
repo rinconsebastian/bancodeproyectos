@@ -24,13 +24,13 @@ class Resumen extends Component
     public $autheliminar = false;
     public $authrechazar = false;
     public $authregistrar = false;
-    public $nombreDoc = "Seleccione un archivo";
+    public $nombreDoc = "Anexe el registro del banco";
     public $statusUploadBtn = "disabled";
     public $filenabled = "";
     public $fileclass = "text-gray-600 hover:text-black cursor-pointer border-gray-500";
     
     public $classUploadBtn = "bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
-    public $fileTitle, $fileName;
+    public $fileTitle, $fileName, $bpin = "999";
 
     protected $listeners = ['transicion'];
 
@@ -82,6 +82,11 @@ class Resumen extends Component
             case 'Aprobado':
                 $this->color = "bg-green-500";
                 $this->authregistrar = $registrar;
+
+              
+
+                
+
                 break;
             case 'Rechazado':
                 $this->color = "bg-purple-500";
@@ -96,6 +101,15 @@ class Resumen extends Component
                     break;
         }
 
+        if( $this->bpin === "999" )
+        {
+        $this->bpin = $proyecto->bpin;
+        }
+        
+
+        if($this->nombreDoc == "Anexe el registro del banco" and $proyecto->registronombre != "" ){
+            $this->nombreDoc = "Remplazar ".$proyecto->registronombre;
+        }
 
         return view('livewire.proyecto.resumen', compact('proyecto'));
     }
@@ -268,7 +282,8 @@ class Resumen extends Component
             'fileName' => 'required|max:200000',
         ]);
 
-        
+        $this->nombreDoc = $this->fileName->getClientOriginalName();
+
         $this->statusUploadBtn = "";
         $this->classUploadBtn = "bg-green-700 text-green-100 hover:bg-green-800 border-gray-500";
     }
@@ -280,6 +295,7 @@ class Resumen extends Component
         $dataValid = $this->validate([
             
             'fileName' => 'required|max:200000',
+            'bpin' => 'required|integer|digits:11'
         ]);
 
         $proyecto = Proyecto::find($this->idproyecto);
@@ -289,6 +305,8 @@ class Resumen extends Component
 
 
         $proyecto->registro = $dataValid['fileName'];
+        $proyecto->registronombre = $this->fileName->getClientOriginalName();
+        $proyecto->bpin = $this->bpin;
         $proyecto->estado = "Registrado";
         $proyecto->save();
 
@@ -301,7 +319,7 @@ class Resumen extends Component
         //$this->filenabled = "disabled";
 
         $this->fileName = null;
-        $this->nombreDoc = "Click Si necesita remplazar el registro";
+        $this->nombreDoc =   "Remplazar ".$proyecto->registronombre;
 
 
         //$this->addError('fileName', 'el campo es requerido');

@@ -18,11 +18,13 @@ class CreateProyectosTable extends Migration
             $table->string('name');
             $table->string('fuente');
             $table->string('fase');
-            $table->decimal('valor',14,2);
+            $table->decimal('valor',20,2);
             $table->string('sector');
             $table->integer('tiempo');
             $table->string('estado');
             $table->string('registro');
+            $table->string('registronombre');
+            $table->string('bpin');
             $table->unsignedBigInteger('user_id');
 
             $table->foreign("user_id")

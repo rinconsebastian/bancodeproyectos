@@ -141,7 +141,7 @@
                                                     <span class=" tracking-normal text-center text-black font-bold">Registro cargado</span>
                                                 </a>
                                                 <a class="w-full text-center" href="/public/storage/{{$proyecto->registro}}" target="_blank">
-                                                    <span class=" tracking-normal text-center text-black font-bold">Proyecto {{$proyecto->id}}</span> 
+                                                    <span class=" tracking-normal text-center text-black font-bold">BPIN {{$proyecto->bpin}}</span> 
                                                 </a>   
                                                 @else
                                                 <svg class="  h-10 w-full" version="1.1" width="24px" height="24px"
@@ -173,6 +173,7 @@
 
                                                             <div class="col-span-12">
                                                                 <div class=" w-full items-center justify-center ">
+                                                                <input type='number' class="form-control text-right text-xs text-gray-600 font-medium" {{ $filenabled }} wire:model="bpin" placeholder="Escriba el código BPIN" />
                                                                     <div x-data="{ isUploading: false, progress: 0 }"
                                                                         x-on:livewire-upload-start="isUploading = true"
                                                                         x-on:livewire-upload-finish="isUploading = false"
@@ -188,8 +189,10 @@
                                                                                     d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                                                             </svg>
                                                                             <span
-                                                                                class="mt-2 text-xs truncate leading-3">{{ $nombreDoc }}</span>
-                                                                            <input type='file' class="hidden" {{ $filenabled }}
+                                                                                class="mt-2 text-xs text-gray-600 truncate leading-3 text-right width-full">{{ $nombreDoc }}</span>
+                                                                                
+
+                                                                                <input type='file' class="hidden" {{ $filenabled }}
                                                                                 
                                                                                 wire:model="fileName" />
                                                                             @error('fileName') <span
@@ -208,7 +211,7 @@
 
 
 
-
+                                                            @if($proyecto->bpin == "")
                                                                 <button type="submit" {{ $statusUploadBtn }}
                                                                     class=" border-gray-100 focus:shadow-outline h-full {{ $classUploadBtn }} font-bold py-2 px-4 rounded inline-flex items-center w-full">
                                                                     <svg class="w-4 h-4 mr-2 fill-current text-white"
@@ -217,9 +220,24 @@
                                                                         <path
                                                                             d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
                                                                     </svg>
-                                                                    <span class="text-center items-center">Adjuntar</span>
+                                                                 
+                                                                    <span class="text-center items-center">Registrar</span>
+                                                                
                                                                 </button>
-
+                                                                @else
+                                                                <button type="submit" {{ $statusUploadBtn }}
+                                                                    class=" border-gray-100 focus:shadow-outline h-full {{ $classUploadBtn }} font-bold py-2 px-4 rounded inline-flex items-center w-full">
+                                                                    <svg class="w-4 h-4 mr-2 fill-current text-white"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 20 20">
+                                                                        <path
+                                                                            d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+                                                                    </svg>
+                                                                 
+                                                                    <span class="text-center items-center">Actualizar registro</span>
+                                                                
+                                                                </button>
+                                                                 @endif
 
 
                                                             </div>
