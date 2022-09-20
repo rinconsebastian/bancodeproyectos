@@ -4,11 +4,10 @@ namespace App\Http\Livewire\Tables;
 
 use Livewire\Component;
 use App\Models\Proyecto;
-use Livewire\WithPagination;
+
 
 class ShowProyectos extends Component
 {
-    use WithPagination;
  
     public $estado='';
     public $usuario='';
