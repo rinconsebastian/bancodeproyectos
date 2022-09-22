@@ -153,12 +153,12 @@
                             <td class="px-2 py-0 text-gray-500">
                                 {{ $proyecto->id }}
                             </td>
-                            <td class="px-2 py-0 ">
+                            <td class="px-2 py-0 elipsenombre" title="{{ $proyecto->name }}">
                                 {{ $proyecto->name }}
                             </td>
                             <td class="px-2 py-0">
-                                <div class="text-sm text-gray-900">{{ $proyecto->user->dependencia->name }}</div>
-                                <div class="text-sm text-gray-500">{{ $proyecto->user->name }}</div>
+                                <div class="text-sm text-gray-900 elipse1">{{ $proyecto->user->dependencia->name }}</div>
+                                <div class="text-sm text-gray-500 elipse1">{{ $proyecto->user->name }}</div>
                             </td>
                             <td class="px-2 py-0 whitespace-nowrap text-sm text-gray-500">
                                 {{ $proyecto->fuente }}
