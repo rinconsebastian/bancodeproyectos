@@ -3,7 +3,7 @@
 .activemenu{ 
 	background-color: #3258c7;
 }
-
+/*
 .h-tabla{
 	height: calc(100% - 87px);
 }
@@ -16,12 +16,12 @@
 	height: calc(100% - 195px);
 }
 
-
+*/
 
 .activemenu{ 
 	background-color: #3258c7;
 }
-
+/*
 .h-tabla{
 	height: calc(100% - 87px);
 }
@@ -33,7 +33,7 @@
 .h-tabla3{
 	height: calc(100% - 195px);
 }
-
+*/
 .orange{
 	background-color: orange;
 	color: white !important;
@@ -51,4 +51,16 @@
 
 .width-full{
 	width: 100%;
+}
+
+[aria-current="page"] span{
+	background-color: rgb(30,58,138) !important;
+	color: white;
+}
+
+tr:nth-child(even) {
+	background-color: rgb(229, 238, 248);
+}
+tr:nth-child(od) {
+	background-color: #fff;
 }

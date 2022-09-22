@@ -18,7 +18,7 @@ class Resumen extends Component
     public $color;
     public $authpresentar = false;
     public $authaprobar = false;
-    public $authcreardevolucion = false;
+    public $authrevisar = false;
     public $authdevolver = false;
     public $authcorregir = false;
     public $autheliminar = false;
@@ -56,19 +56,21 @@ class Resumen extends Component
                 break;
             case 'Presentado':
                 $this->color = "bg-blue-500";
-                $this->authaprobar = $aprobar;
-                $this->authcreardevolucion = $devolver;
-                $this->authrechazar = $rechazar;
+                $this->authrevisar = $aprobar;
+                //$this->authcreardevolucion = $devolver;
+                // $this->authrechazar = $rechazar;
                 break;
 
-                case 'Registrado':
+            case 'Registrado':
                     $this->color = "bg-green-800";
                     $this->authregistrar = $registrar;
                     break;
 
             case 'Revisión':
                 $this->color = "bg-blue-800";
+                $this->authaprobar = $aprobar;
                 $this->authdevolver = $devolver;
+                $this->authrechazar = $rechazar;
                 break;
             case 'Devuelto':
                 $this->color = "bg-yellow-500";
@@ -116,9 +118,6 @@ class Resumen extends Component
 
     public function transicion($proceso)
     {
-
-
-
         $proyecto = Proyecto::find($this->idproyecto);
         $nuevoEstado = "";
 
@@ -132,6 +131,9 @@ class Resumen extends Component
                     if($historia != null){
                         $files = $historia->files();
                             if($files->count() > 0){
+                               
+
+
                                 $nuevoEstado = "Presentado";
                             }else{
                                 session()->flash('error', 'no se pueden presentar proyectos sin archivos');
@@ -143,41 +145,47 @@ class Resumen extends Component
                     
                 }
                 break;
-            case 'creardevolucion';
+            case 'crearrevision';
 
-                if ($this->authcreardevolucion and $proyecto->estado == "Presentado") {
+                if ($this->authrevisar and $proyecto->estado == "Presentado") {
                     $historia = Historia::where('proyecto_id', $this->idproyecto)
                         ->orderBy('id', 'DESC')->first();
-
-
                         if($historia != null){
-                            $files = $historia->files()->where('estado','Nuevo');
-                                  
-                            if($files->count() > 0){
-                                    session()->flash('error', 'Debe revisar todos los documentos anexos para poder rechazar el proyectos');
-                                }else{
-                                    $revision = new Revision();
-                                    $revision->estado = "Borrador";
-                                    $revision->historia_id = $historia->id;
+                            $revision = new Revision();
+                            $revision->estado = "Borrador";
+                            $revision->historia_id = $historia->id;
+                        
+                            $revision->save();
+                            $historia->proyecto->estado = "Revisión";
+                            $historia->proyecto->save();
+                        
+                            return redirect()->route('proyectos.show', $this->idproyecto);
+                         } else{
+                        session()->flash('error', 'el proyecto no tiene una historia, reporte esta falla técnica');
+                    }                       
+                        
+                } 
                 
-                                    $revision->save();
-                                    $historia->proyecto->estado = "Revisión";
-                                    $historia->proyecto->save();
-                
-                                    return redirect()->route('proyectos.show', $this->idproyecto);
-                                    
-                                }
-                        }  else{
-                            session()->flash('error', 'el proyecto no tiene una historia, reporte esta falla técnica');
-                        }    
 
-                    
-                }
 
                 break;
             case 'devolver':
                 $falla = false;
+                $mensaje = "";
                 $historias = Historia::where('proyecto_id', $proyecto->id)->get();
+
+                
+                foreach ($historias as $historia) {
+
+                    $files = $historia->files()->where('estado','Nuevo');
+                                  
+                    if($files->count() > 0){
+                        $falla = true;
+                    $mensaje = "Debe revisar todos los documentos anexos para poder rechazar el proyectos";
+                         }
+                }
+
+                if($falla == false){
                 foreach ($historias as $historia) {
                     $revisiones = Revision::where('historia_id', $historia->id)->where('estado', "Borrador")->get();
                     foreach ($revisiones as $revisionn) {
@@ -188,14 +196,16 @@ class Resumen extends Component
                             $revisionn->save();
                         }else{
                             $falla = true;
+                            $mensaje = "Escriba una nota o anexe un documento para devolver el proyecto";
                         }
                         
                     }
                 }
+            }
                 if($falla == false){
                 $nuevoEstado = "Devuelto";
             }else{
-                session()->flash('error', 'Escriba una nota o anexe un documento para devolver el proyecto');
+                session()->flash('error',  $mensaje);
             }
 
                 break;
@@ -206,28 +216,60 @@ class Resumen extends Component
                     return redirect()->route('proyectos.edit', ["proyecto" => $this->idproyecto]);
                 }
                 break;
+
+
             case 'aprobar':
-                if ($this->authaprobar and $proyecto->estado == "Presentado") {
+                $falla = true;
+                $mensaje = "No tiene permiso o el proyecto ya ha sido aprobado";
+
+                if ($this->authaprobar and $proyecto->estado == "Revisión") {
                     
                     $historia = Historia::where('proyecto_id', $this->idproyecto)
                     ->orderBy('id', 'DESC')->first();
                     if($historia != null){
                         $files = $historia->files()->where('estado','Nuevo');
                             if($files->count() > 0){
-                                session()->flash('error', 'Debe revisar todos los documentos anexos para poder aprobar el proyectos');
+                                $falla = true;
+                                $mensaje = "Debe revisar todos los documentos anexos para poder aprobar el proyectos";
                             }else{
-                                $nuevoEstado = "Aprobado";
+                                $falla = false;
                                 
                             }
-                    }  else{
-                        session()->flash('error', 'el proyecto no tiene una historia, reporte esta falla técnica');
-                    }     
+                    } 
                     
-                   
+                    if($falla == false){
+                    $historias = Historia::where('proyecto_id', $proyecto->id)->get();
+                    foreach ($historias as $historia) {
+                        $revisiones = Revision::where('historia_id', $historia->id)->where('estado', "Borrador")->get();
+                        foreach ($revisiones as $revisionn) {
+                            $files = $revisionn->files();
+                            if($files->count() > 0 )
+                            {
+                                $revisionn->estado = "Finalizada";
+                                $revisionn->save();
+                            }else{
+                                $falla = true;
+                                $mensaje = "Anexe la ficha de revisón para aprobar el proyecto";
+                            }
+                            
+                        }
+                    }
                 }
+
+
+
+                }
+
+                if($falla == true){
+                    session()->flash('error',  $mensaje);
+                }else{
+                    $nuevoEstado = "Aprobado";
+                }
+
+
                 break;
             case 'rechazar':
-                if ($this->authrechazar and $proyecto->estado == "Presentado") {
+                if ($this->authrechazar and $proyecto->estado == "Revisión") {
                   
                    $nuevoEstado = "Rechazado";
                                 
@@ -295,7 +337,7 @@ class Resumen extends Component
         $dataValid = $this->validate([
             
             'fileName' => 'required|max:200000',
-            'bpin' => 'required|integer|digits:11'
+            'bpin' => 'required|integer|digits_between:11,20'
         ]);
 
         $proyecto = Proyecto::find($this->idproyecto);

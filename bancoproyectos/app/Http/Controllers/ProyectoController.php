@@ -58,10 +58,15 @@ class ProyectoController extends Controller
         array_push($sectores, 'EDUCACION');
         array_push($sectores, 'INCLUSION SOCIAL Y RECONCILIACION');
         array_push($sectores, 'INDUSTRIA Y COMERCIO');
+        array_push($sectores, 'INFRAESTRUCTURA');
+        array_push($sectores, 'INVERSIÓN');
         array_push($sectores, 'JUSTICIA');
         array_push($sectores, 'MINAS Y ENERGIA');
         array_push($sectores, 'PLANEACION');
         array_push($sectores, 'SALUD Y PROTECCIÓN SOCIAL');
+        array_push($sectores, 'SEGURIDAD');
+        array_push($sectores, 'SERVICIOS PÚBLICOS');
+        array_push($sectores, 'SOCIAL');
         array_push($sectores, 'TRANSPORTE');
         array_push($sectores, 'VIVIENDA, CIUDAD Y TERRITORIO');
         array_push($sectores, 'OTROS');
@@ -73,12 +78,12 @@ class ProyectoController extends Controller
     {
 
         $validated = $request->validate([
-            'name' => 'required|unique:proyectos|max:255',
+            'name' => 'required|unique:proyectos|max:3000',
             'fuente' => 'required',
             'fase' => 'required',
             'valor' => 'required|numeric|min:0',
             'sector' => 'required',
-            'tiempo' => 'required|min:1|integer',
+            'tiempo' => 'required|min:0',
 
         ]);
 
@@ -134,20 +139,34 @@ class ProyectoController extends Controller
         array_push($sectores, 'EDUCACION');
         array_push($sectores, 'INCLUSION SOCIAL Y RECONCILIACION');
         array_push($sectores, 'INDUSTRIA Y COMERCIO');
+        array_push($sectores, 'INFRAESTRUCTURA');
+        array_push($sectores, 'INVERSIÓN');
         array_push($sectores, 'JUSTICIA');
         array_push($sectores, 'MINAS Y ENERGIA');
         array_push($sectores, 'PLANEACION');
         array_push($sectores, 'SALUD Y PROTECCIÓN SOCIAL');
+        array_push($sectores, 'SEGURIDAD');
+        array_push($sectores, 'SERVICIOS PÚBLICOS');
+        array_push($sectores, 'SOCIAL');
         array_push($sectores, 'TRANSPORTE');
         array_push($sectores, 'VIVIENDA, CIUDAD Y TERRITORIO');
         array_push($sectores, 'OTROS');
-
 
         return view('proyectos.edit', compact('proyecto','sectores'));
     }
 
     public function update(Request $request, proyecto $proyecto)
     {
+
+        $validated = $request->validate([
+            'name' => 'required|max:3000',
+            'fuente' => 'required',
+            'fase' => 'required',
+            'valor' => 'required|numeric|min:0',
+            'sector' => 'required',
+            'tiempo' => 'required|min:0',
+
+        ]);
 
 
         $proyecto->name = $request->name;

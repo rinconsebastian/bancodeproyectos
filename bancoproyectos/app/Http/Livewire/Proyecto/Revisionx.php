@@ -23,7 +23,7 @@ class Revisionx extends Component
             $this->detalle = $revision->detalle;
 
 
-            if ($revision->historia->proyecto->estado == "Revisión") {
+            if ($revision->historia->proyecto->estado == "Revisión" ) {
                 $this->editrevision = true;
             }
         } else {

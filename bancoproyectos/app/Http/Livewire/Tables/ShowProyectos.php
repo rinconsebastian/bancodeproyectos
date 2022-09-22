@@ -4,16 +4,18 @@ namespace App\Http\Livewire\Tables;
 
 use Livewire\Component;
 use App\Models\Proyecto;
+use Livewire\WithPagination;
 
 
 class ShowProyectos extends Component
 {
+    use WithPagination;
  
     public $estado='';
     public $usuario='';
     public $search; 
-    public $sort ='id';
-    public $direction ='desc';
+    public $sort ='name';
+    public $direction ='asc';
     public $displayestado = false;
     
 

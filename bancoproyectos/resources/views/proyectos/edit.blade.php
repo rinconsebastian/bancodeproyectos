@@ -47,6 +47,9 @@
                                 </option>
                                 <option {{ str_contains($proyecto->fuente,'Regalias') ? 'selected' : '' }} value="Regalias">
                                     Regalias</option>
+                                    <option {{ str_contains($proyecto->fuente,'SGP') ? 'selected' : '' }} value="SGP">
+                                    SGP</option>
+                                
                                 <option {{ str_contains($proyecto->fuente,'Otros') ? 'selected' : '' }} value="Otros">Otros
                                 </option>
                             </select>

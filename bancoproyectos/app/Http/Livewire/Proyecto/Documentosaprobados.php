@@ -13,6 +13,8 @@ class Documentosaprobados extends Component
     
     public $idproyecto;
     public $tipo;
+    public $registro;
+    public $proyecto;
 
     public function render()
     {
@@ -33,6 +35,10 @@ class Documentosaprobados extends Component
         }
        
     $files = $files->where('estado','Aprobado')->sortBy('id')->groupBy('detalle');
+
+    //incluyendo certificado de registro
+    $this->proyecto = Proyecto::find($this->idproyecto);
+    
 
 
         return view('livewire.proyecto.documentosaprobados',compact('files','total'));

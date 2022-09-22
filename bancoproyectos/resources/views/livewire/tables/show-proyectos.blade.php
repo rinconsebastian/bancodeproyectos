@@ -8,12 +8,12 @@
 
     
         @if ($proyectos->count() > 0)
-            <table class="min-w-full divide-y divide-gray-200 h-tabla">
+            <table class="min-w-full divide-y divide-gray-500 h-tabla">
                 <thead class="bg-gray-50">
                     <tr>
                         
                         <th scope="col"
-                            class="cursor-pointer  px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
+                            class="hover:bg-blue-200 cursor-pointer  px-2 py-3 text-left text-xs font-medium font-extrabold uppercase tracking-normal"
                             wire:click="order('id')">
                             Id
 
@@ -29,7 +29,7 @@
                             @endif
                         </th>
                         <th scope="col"
-                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
+                            class="hover:bg-blue-200 cursor-pointer px-2 py-3 text-left text-xs font-medium font-extrabold uppercase tracking-normal"
                             wire:click="order('name')">
                             Nombre
                            {{-- Sort--}}
@@ -45,7 +45,7 @@
 
                         </th>
                         <th scope="col"
-                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
+                            class=" hover:bg-blue-200 cursor-pointer px-2 py-3 text-left text-xs font-medium font-extrabold uppercase tracking-normal"
                             wire:click="order('user_id')">
                             Usuario
                             {{-- Sort--}}
@@ -60,7 +60,7 @@
                             @endif
                         </th>
                         <th scope="col"
-                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
+                            class="hover:bg-blue-200 cursor-pointer px-2 py-3 text-left text-xs font-medium font-extrabold uppercase tracking-normal"
                             wire:click="order('fuente')">
                             Fuente
                             {{-- Sort--}}
@@ -75,7 +75,7 @@
                             @endif
                         </th>
                         <th scope="col"
-                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
+                            class="hover:bg-blue-200 cursor-pointer px-2 py-3 text-left text-xs font-medium font-extrabold uppercase tracking-normal"
                             wire:click="order('valor')">
                             Valor
                             {{-- Sort--}}
@@ -90,7 +90,7 @@
                             @endif
                         </th>
                         <th scope="col"
-                            class="cursor-pointer  px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
+                            class="hover:bg-blue-200 cursor-pointer  px-2 py-3 text-left text-xs font-medium font-extrabold uppercase tracking-normal"
                             wire:click="order('bpin')">
                             BPIN
 
@@ -106,7 +106,7 @@
                             @endif
                         </th>
                         <th scope="col"
-                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
+                            class="hover:bg-blue-200 cursor-pointer px-2 py-3 text-left text-xs font-medium font-extrabold uppercase tracking-normal"
                             wire:click="order('sector')">
                             Sector
                             {{-- Sort--}}
@@ -122,7 +122,7 @@
                         </th>
                         @if ($displayestado == true)
                         <th scope="col"
-                            class="cursor-pointer px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-normal"
+                            class="hover:bg-blue-200 cursor-pointer px-2 py-3 text-left text-xs font-medium font-extrabold uppercase tracking-normal"
                             wire:click="order('estado')">
                             Estado
                             {{-- Sort--}}
@@ -148,7 +148,7 @@
                     @endphp
                     @foreach ($proyectos as $proyecto)
 
-                        <tr   class="hover:bg-gray-200 cursor-pointer" wire:click="open('{{$proyecto->id}}')">
+                        <tr   class="hover:bg-gray-200 cursor-pointer even:bg-gray-200 odd:bg-blue-100"  wire:click="open('{{$proyecto->id}}')">
                             
                             <td class="px-2 py-0 text-gray-500">
                                 {{ $proyecto->id }}

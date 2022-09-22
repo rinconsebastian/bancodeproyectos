@@ -24,7 +24,7 @@ class ProyectoFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence(),
-        'fuente' => $this->faker->randomElement(['Propios','Regalias','Cooperación']),
+        'fuente' => $this->faker->randomElement(['Propios','Regalias','Cooperación','SGP']),
         'fase' => $this->faker->randomElement(['I','II','III','IV']),
         'valor' => $this->faker->randomNumber(8),
         'sector' => $this->faker->randomElement(['Salud','Educación','Infraestrcutura','Mobiliario','Vías']),

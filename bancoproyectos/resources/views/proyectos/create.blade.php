@@ -46,6 +46,8 @@
                                 </option>
                                 <option {{ old('fuente1') == 'Regalias' ? 'selected' : '' }} value="Regalias">Regalias
                                 </option>
+                                <option {{ old('fuente1') == 'SGP' ? 'selected' : '' }} value="SGP">SGP
+                                </option>
                                 <option {{ old('fuente1') == 'Otros' ? 'selected' : '' }} value="Otros">Otros</option>
                             </select>
 

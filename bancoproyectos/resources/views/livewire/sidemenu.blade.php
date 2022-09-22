@@ -44,6 +44,19 @@
               </a>
             </li>
             <li>
+              <a href="{{route('proyectos.listado', 'Revisión')}}" class="{{(request()->url() == route('proyectos.listado', 'Revisión'))  ?'activemenu':''}} relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 amenu">
+                <span class="inline-flex justify-center items-center ml-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                   
+                </span>
+
+                <span class="ml-2 text-sm tracking-wide truncate">Revisión</span>
+                @livewire('proyecto.cuenta',['estado' => 'Revisión' ,'usuario' => Auth::user()->id ])
+              </a>
+            </li>
+            <li>
               <a href="{{route('proyectos.listado', 'Aprobado')}}" class="{{(request()->url() == route('proyectos.listado', 'Aprobado'))  ?'activemenu':''}} relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 amenu">
                 <span class="inline-flex justify-center items-center ml-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,18 +78,7 @@
             <li class="px-5 mt-3 hidden md:block border-t-2 border-solid">
              
             </li>
-            <li>
-              <a href="{{route('proyectos.listado', 'Revisión')}}" class="{{(request()->url() == route('proyectos.listado', 'Revisión'))  ?'activemenu':''}} relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 amenu">
-                <span class="inline-flex justify-center items-center ml-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
-                  </svg>    
-                </span>
-
-                <span class="ml-2 text-sm tracking-wide truncate">Revisión</span>
-                @livewire('proyecto.cuenta',['estado' => 'Revisión' ,'usuario' => Auth::user()->id ])
-              </a>
-            </li>
+            
             <li>
                 <a href="{{route('proyectos.listado', 'Devuelto')}}" class="{{(request()->url() == route('proyectos.listado', 'Ajustes'))  ?'activemenu':''}} relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 amenu">
                   <span class="inline-flex justify-center items-center ml-4">
@@ -87,6 +89,18 @@
 
                   <span class="ml-2 text-sm tracking-wide truncate">Devueltos</span>
                   @livewire('proyecto.cuenta',['estado' => 'Devuelto' ,'usuario' => Auth::user()->id ])
+                </a>
+              </li>
+              <li>
+                <a href="{{route('proyectos.listado', 'Ajustes')}}" class="{{(request()->url() == route('proyectos.listado', 'Ajustes'))  ?'activemenu':''}} relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6 amenu">
+                  <span class="inline-flex justify-center items-center ml-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                    </svg>    
+                  </span>
+
+                  <span class="ml-2 text-sm tracking-wide truncate">Ajustes</span>
+                  @livewire('proyecto.cuenta',['estado' => 'Ajustes' ,'usuario' => Auth::user()->id ])
                 </a>
               </li>
               <li>

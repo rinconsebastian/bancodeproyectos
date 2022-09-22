@@ -7,7 +7,7 @@
 .activemenu{ 
 	background-color: #3258c7;
 }
-
+/*
 .h-tabla{
 	height: calc(100% - 87px);
 }
@@ -19,7 +19,7 @@
 .h-tabla3{
 	height: calc(100% - 195px);
 }
-
+*/
 .orange{
 	background-color: orange;
 	color: white !important;
@@ -34,4 +34,9 @@
 
 .width-full{
 	width: 100%;
+}
+
+.tooltip-inner {
+	min-width: 100px;
+    max-width: 100%; 
 }

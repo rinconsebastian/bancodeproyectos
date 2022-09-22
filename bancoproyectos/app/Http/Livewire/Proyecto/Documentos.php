@@ -51,7 +51,7 @@ class Documentos extends Component
         $rechazar = in_array("proyectos.rechazar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
 
 
-        If ($historia->estado == "Finalizada" && $historia->proyecto->estado == "Presentado") {
+        If ($historia->estado == "Finalizada" && $historia->proyecto->estado == "Revisión") {
 
             
             $this->authAprobarArchivo = $aprobar ;
@@ -78,7 +78,7 @@ class Documentos extends Component
 
         $tipos = array("Seleccione");
 
-        $tipos = array_merge($tipos, Tiposarchivos::where('grupo', 'proyecto')->whereNotIn('texto', $tiposdoc)->pluck('texto', 'texto')->toarray());
+        $tipos = array_merge($tipos, Tiposarchivos::where('grupo', 'proyecto')->whereNotIn('texto', $tiposdoc)->orderBy('texto')->pluck('texto', 'texto')->toarray());
 
 
         return view('livewire.proyecto.documentos', compact('documentos', 'tipos'));
@@ -214,7 +214,7 @@ class Documentos extends Component
         $devolver = in_array("proyectos.devolver",auth()->user()->getAllPermissions()->pluck('name')->toArray());
         $rechazar = in_array("proyectos.rechazar",auth()->user()->getAllPermissions()->pluck('name')->toArray());
 
-        if ($historia->estado == "Finalizada" && $historia->proyecto->estado == "Presentado" && $doc != null) {
+        if ($historia->estado == "Finalizada" && $historia->proyecto->estado == "Revisión" && $doc != null) {
         
             if($accion == "Rechazar" && ($devolver || $rechazar)){
 

@@ -20,6 +20,8 @@ module.exports = {
     variants: {
         extend: {
             opacity: ['disabled'],
+            backgroundColor: ['even'],
+            backgroundColor: ['odd'],
         },
     },
 

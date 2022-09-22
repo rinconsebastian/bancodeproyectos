@@ -23,7 +23,16 @@ class Reporte extends Component
 
         }
 
+        foreach($proyectos as $proyecto){
+            $proyecto->name = str_replace("'", "", $proyecto->name);
+            $proyecto->name = str_replace('"', "", $proyecto->name);
+    
+        }
+       
         $proyectosjson =  (string) $proyectos;
+       
+
+        
 
         return view('livewire.proyecto.reporte', compact('proyectosjson'));
     }

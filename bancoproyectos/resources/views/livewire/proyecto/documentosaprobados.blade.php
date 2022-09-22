@@ -31,6 +31,27 @@
 
  
     @endforeach
+    
+    @if ($proyecto->registro != "")
+        @php
+        $tipo = "application/zip";
+        $extension = current(array_reverse(explode('.', $proyecto->registro)));
+        if($extension == "docx" | $extension == "docx"){
+        $tipo = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+        } else if($extension == "pdf"){
+            $tipo = "application/pdf";
+        }
+        
+        @endphp
+
+            
+                <a title="{{$n+1}}. {{$proyecto->registronombre}}" href="/public/storage/{{$proyecto->registro}}" target="_blank" class=" text-xs cursor-pointer  relative flex flex-row items-center h-8 transition duration-500 transform ease-in-out hover:bg-gray-200">
+                    <x-iconofile type="{{$tipo}}" size="24" />
+                    <span class="ml-2 text-sm tracking-normal truncate">{{$n+1}}. Certificado banco de proyectos </span>      
+                </a>
+            
+    @endif
+
 </ul>
     
 </div>

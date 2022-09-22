@@ -15,8 +15,8 @@
             <div class="w-full">
                 <div class="py-1 px-3 grid text-xs grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4  p-0 gap-0 mb-2 card-header">
                     <h1
-                        class="md:col-span-3 lg:col-span-3 xl:col-span-3 text-lg sm:text-lg lg:text-2xl xl:text-2xl text-black dark:text-white font-bold tracking-tight uppercase">
-                        {{ $proyecto->name }}</h1>
+                        class=" md:col-span-3 lg:col-span-3 xl:col-span-3 text-lg sm:text-lg lg:text-2xl xl:text-2xl text-black dark:text-white font-bold tracking-tight uppercase" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{$proyecto->name}}" >
+                        {{ substr($proyecto->name,0,300) }}</h1>
                     <h2 class="text-center {{ $color }} text-white rounded-md font-bold pt-1 shadow-lg ">
                         {{ $proyecto->estado }}</h2>
                 </div>
@@ -272,15 +272,15 @@
                                                     type="button">Aprobar</button>
                                             @endif
 
-                                            @if ($authcreardevolucion)
+                                            @if ($authrevisar)
                                                 <button
-                                                    @click="transicion('{{ $proyecto->id }}','creardevolucion','Devolver ','#d97706')"
+                                                    @click="transicion('{{ $proyecto->id }}','crearrevision','Revisar ','#1e3a87')"
                                                     class="  bg-yellow-500 dark:bg-gray-100 h-10 text-white active:bg-yellow-600 hover:bg-yellow-700 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                                    type="button">Devolver</button>
+                                                    type="button">Revisar</button>
                                             @endif
                                             @if ($authdevolver)
                                                 <button
-                                                    @click="transicion('{{ $proyecto->id }}','devolver','Enviar devolución ','#d97706')"
+                                                    @click="transicion('{{ $proyecto->id }}','devolver','Devolver ','#d97706')"
                                                     class="  bg-yellow-500 dark:bg-gray-100 h-12 text-white active:bg-yellow-600 hover:bg-yellow-700 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                                     type="button">Enviar devolución</button>
                                             @endif
@@ -367,6 +367,12 @@
 
 </div>
 <script>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
+
     function transicion(id, accion, texto, color) {
         if (id != null) {
             icono = "warning";
@@ -403,3 +409,11 @@
         }
     }
 </script>
+<style>
+    .tooltip-inner {
+	min-width: 80vw;
+    background-color: rgba(0,0,0,0.9);
+   
+    
+}
+</style>

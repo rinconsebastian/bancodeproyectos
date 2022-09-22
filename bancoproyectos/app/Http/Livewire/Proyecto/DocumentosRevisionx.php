@@ -32,12 +32,12 @@ class DocumentosRevisionx extends Component
         $devolver = in_array("proyectos.devolver",auth()->user()->getAllPermissions()->pluck('name')->toArray());
         //$tipos = Tiposarchivos::where('grupo','proyecto')->pluck('texto','texto');
 
-        if(($revision->estado == "Borrador" or $revision->estado == "Ajustes") and    $devolver){
+        if((($revision->estado == "Borrador" or $revision->estado == "Ajustes") and  $devolver) ){
            
             $this->disponible = true;
         }
 
-
+       
         $documentos = $revision->files;
 
 
@@ -45,7 +45,7 @@ class DocumentosRevisionx extends Component
         
         $tipos = array("Seleccione"); 
         
-        $tipos = array_merge($tipos,Tiposarchivos::where('grupo','revision')->whereNotIn('texto', $tiposdoc)->pluck('texto','texto')->toarray());
+        $tipos = array_merge($tipos,Tiposarchivos::where('grupo','revision')->whereNotIn('texto', $tiposdoc)->orderBy('texto')->pluck('texto','texto')->toarray());
 
         return view('livewire.proyecto.documentos-revisionx', compact('documentos','tipos'));
     }
