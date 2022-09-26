@@ -20,7 +20,7 @@ class Documentos extends Component
     public $fileclass = "cursor-not-allowed";
     public $nombreDoc = "Seleccione un archivo";
     public $statusUploadBtn = "disabled";
-    public $classUploadBtn = "bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
+    public $classUploadBtn = "bg-gray-100 dark:bg-gray-900 text-gray-300 hover:bg-gray-500 cursor-not-allowed";
     public $disponible = false;
 
     public $authAprobarArchivo = false;
@@ -112,7 +112,7 @@ class Documentos extends Component
 
 
         $this->statusUploadBtn = "disabled";
-        $this->classUploadBtn = "bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
+        $this->classUploadBtn = "bg-gray-100 dark:bg-gray-900 text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
 
         $this->fileclass = "cursor-not-allowed";
         $this->filenabled = "disabled";

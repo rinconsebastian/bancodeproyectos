@@ -8,7 +8,7 @@
                     $n++;    
                     @endphp
 <div
-class=" border-solid border-1 border-gray-600  shadow-sm shadow  truncate  py-2 pl-1 pr-6 rounded mt-1 border-b border-gray-100 dark:border-gray-900    relative flex flex-row items-center h-7 transition duration-200 ease-in-out transform">
+class=" border-solid border-1 border-gray-600  shadow-sm shadow  truncate  py-2 pl-1 pr-6 rounded mt-1 border-b border-gray-100 dark:border-gray-900  dark:bg-gray-700   relative flex flex-row items-center h-7 transition duration-200 ease-in-out transform">
 @if ($disponible == true)
                         <span title="Borrar" class=" text-red-700 hover:text-red-500 inline-block cursor-pointer  transform transition duration-200 hover:scale-125"
                             @click="alertaBorrarrev({{ $documento }})">
@@ -43,7 +43,7 @@ class=" border-solid border-1 border-gray-600  shadow-sm shadow  truncate  py-2 
     @endforeach
    
    @if($edit == true and $disponible == true)
-    <div class="flex justify-between py-1 text-black dark:text-white">
+    <div class="flex justify-between py-1 text-gray-900 dark:text-gray-100 dark:text-white">
         <h3 class="text-sm font-semibold">Agregar documento</h3>
         
     </div>

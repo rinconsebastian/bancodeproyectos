@@ -29,7 +29,7 @@ class Resumen extends Component
     public $filenabled = "";
     public $fileclass = "text-gray-600 hover:text-black cursor-pointer border-gray-500";
     
-    public $classUploadBtn = "bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
+    public $classUploadBtn = "bg-gray-100 dark:bg-gray-900 text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
     public $fileTitle, $fileName, $bpin = "999";
 
     protected $listeners = ['transicion'];
@@ -355,7 +355,7 @@ class Resumen extends Component
 
 
        $this->statusUploadBtn = "disabled";
-       $this->classUploadBtn = "bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
+       $this->classUploadBtn = "bg-gray-100 dark:bg-gray-900 text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
 
         //$this->fileclass = "cursor-not-allowed";
         //$this->filenabled = "disabled";

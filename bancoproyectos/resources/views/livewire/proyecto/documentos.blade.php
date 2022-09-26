@@ -5,7 +5,7 @@
 @endphp
 
     <div class="rounded bg-gray-100 dark:bg-gray-800 p-2">
-        <div class="flex justify-between py-0 text-black dark:text-white">
+        <div class="flex justify-between py-0 text-gray-900 dark:text-gray-100">
             <h3 class="text-sm font-semibold">Documentos</h3>
             
         </div>

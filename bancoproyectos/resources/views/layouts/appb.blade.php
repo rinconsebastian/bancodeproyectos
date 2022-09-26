@@ -182,7 +182,7 @@ input[type=number] {
     
       <livewire:sidemenu />
     
-      <div class="h-full ml-14 mt-14 mb-0 pb-0 md:ml-64">
+      <div class="h-full ml-14 mt-14 mb-0 pb-0 md:ml-64  dark:bg-gray-700">
     
         {{ $slot }}
       </div>

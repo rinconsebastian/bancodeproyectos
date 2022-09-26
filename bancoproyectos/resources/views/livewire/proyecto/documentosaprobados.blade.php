@@ -13,12 +13,12 @@
     <li class="text-xs">
         
         @if (($extension == 'pdf') | ($extension == 'jpeg') | ($extension == 'jpg') | ($extension == 'png'))
-                        <a title="{{$n}}. {{$file->last()->detalle}}" href="/public/storage/{{ $file->last()->url }}" target="_blank" class=" text-xs cursor-pointer  relative flex flex-row items-center h-8 transition duration-500 transform ease-in-out hover:bg-gray-200">
+                        <a title="{{$n}}. {{$file->last()->detalle}}" href="/public/storage/{{ $file->last()->url }}" target="_blank" class=" text-xs cursor-pointer  relative flex flex-row items-center h-8 transition duration-500 transform ease-in-out hover:bg-gray-200 dark:text-gray-100 dark:hover:bg-gray-900">
                             <x-iconofile type="{{$file->last()->tipo}}" size="24" />
                             <span class="ml-2 text-sm tracking-normal truncate">{{$n}}. {{$file->last()->detalle}}  </span>      
                         </a>
                     @else
-                        <a  title="{{$n}}. {{$file->last()->detalle}}" wire:click="export('{{ $file->last()->id }}')"  class="text-xs cursor-pointer  relative flex flex-row items-center h-8 transition duration-500 ease-in-out transform hover:bg-gray-200">
+                        <a  title="{{$n}}. {{$file->last()->detalle}}" wire:click="export('{{ $file->last()->id }}')"  class="text-xs cursor-pointer  relative flex flex-row items-center h-8 transition duration-500 ease-in-out transform hover:bg-gray-200  dark:text-gray-100 dark:hover:bg-gray-900">
                             <x-iconofile type="{{$file->last()->tipo}}" size="24" />
                          <span  class="ml-2 text-sm tracking-normal truncate">{{$n}}. {{$file->last()->detalle}}</span>       
                         </a>

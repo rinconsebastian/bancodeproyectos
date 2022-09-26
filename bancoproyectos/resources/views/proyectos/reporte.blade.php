@@ -2,7 +2,7 @@
    
     
        
-    <div class="grid grid-cols-1 lg:grid-cols-1 p-3 gap-2 h-full ">
+    <div class="grid grid-cols-1 lg:grid-cols-1 p-3 gap-2 h-full  dark:bg-gray-700">
     <!-- Borradores -->
     <x-marcotabla>
         <x-slot name='titulo'> reporte </x-slot>

@@ -19,7 +19,7 @@ class DocumentosRevisionx extends Component
     public $fileclass2 = "cursor-not-allowed";
     public $nombreDoc2 = "Seleccione un archivo";
     public $statusUploadBtn2 = "disabled";
-    public $classUploadBtn2 = "bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
+    public $classUploadBtn2 = "bg-gray-100 dark:bg-gray-900 text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
     public $edit;
     public $disponible = false;
 
@@ -78,7 +78,7 @@ class DocumentosRevisionx extends Component
 
 
         $this->statusUploadBtn2 = "disabled";
-        $this->classUploadBtn2 ="bg-white text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
+        $this->classUploadBtn2 ="bg-gray-100 dark:bg-gray-900 text-gray-300 hover:bbg-gray-500 cursor-not-allowed";
 
         $this->fileclass2 = "cursor-not-allowed";
         $this->filenabled2 = "disabled";

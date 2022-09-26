@@ -11,11 +11,11 @@
 @endif
     <div class="p-0 mr-1 bg-gray-100 dark:bg-gray-800 sm:rounded-lg card">
 
-        <div class="flex flex-wrap " id="tabs-id">
+        <div class="flex flex-wrap" id="tabs-id">
             <div class="w-full">
                 <div class="py-1 px-3 grid text-xs grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4  p-0 gap-0 mb-2 card-header">
                     <h1
-                        class=" md:col-span-3 lg:col-span-3 xl:col-span-3 text-lg sm:text-lg lg:text-2xl xl:text-2xl text-black dark:text-white font-bold tracking-tight uppercase" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{$proyecto->name}}" >
+                        class=" md:col-span-3 lg:col-span-3 xl:col-span-3 text-lg sm:text-lg lg:text-2xl xl:text-2xl dark:text-gray-100 font-bold tracking-tight uppercase" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{$proyecto->name}}" >
                         {{ substr($proyecto->name,0,300) }}</h1>
                     <h2 class="text-center {{ $color }} text-white rounded-md font-bold pt-1 shadow-lg ">
                         {{ $proyecto->estado }}</h2>
@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="-mb-px mr-2 last:mr-0 flex-auto text-center  cursor-pointer">
-                        <a class="text-xs font-bold uppercase lg:px-5 sm:px-1 sm:text-base py-1 shadow-lg rounded block leading-normal text-blue-900 bg-white"
+                        <a class="text-xs font-bold uppercase lg:px-5 sm:px-1 sm:text-base py-1 shadow-lg rounded block leading-normal text-blue-900 bg-gray-100 dark:bg-gray-900 dark:text-white"
                             onclick="changeAtiveTab(event,'tab-settings')">
                             <span class="inline-flex justify-center items-center ml-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
@@ -52,8 +52,8 @@
                     </li>
 
                 </ul>
-                <div class="ml-4 mr-4 mb-3 relative flex flex-col min-w-0 break-words bg-white  shadow-lg rounded">
-                    <div class="px-0 py-1 flex-auto">
+                <div class="ml-4 mr-4 mb-3 relative flex flex-col min-w-0 break-words bg-gray-100 dark:bg-gray-900  shadow-lg rounded">
+                    <div class="px-0 py-1 flex-auto dark:bg-gray-700">
                         <div class="tab-content tab-space">
                             <div class="block" id="tab-profile">
                                 <div
@@ -67,7 +67,7 @@
                                             class="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 p-0 gap-0 my-5">
 
                                             <div class="grid items-center mt-4 text-gray-600 dark:text-gray-400">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class=" text-black h-10 w-full"
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-900 dark:text-gray-400 h-10 w-full"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
@@ -84,7 +84,7 @@
                                             </div>
 
                                             <div class="grid items-center mt-4 text-gray-600 dark:text-gray-400">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class=" text-black h-10 w-full"
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-900 dark:text-gray-400 h-10 w-full"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
@@ -98,7 +98,7 @@
                                             </div>
 
                                             <div class="grid items-center mt-4 text-gray-600 dark:text-gray-400">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="  text-black h-10 w-full"
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-900 dark:text-gray-400 h-10 w-full"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
@@ -111,7 +111,7 @@
 
                                             </div>
                                             <div class="grid items-center mt-4 text-gray-600 dark:text-gray-400">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class=" text-black h-10 w-full"
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-900 dark:text-gray-400 h-10 w-full"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
@@ -127,7 +127,7 @@
                                                 @if ($proyecto->registro != "")
                                                 <a class="w-full" href="/public/storage/{{$proyecto->registro}}" target="_blank">
 
-                                                <svg class="  h-10 w-full" version="1.1" width="24px" height="24px"
+                                                <svg class="text-gray-900 dark:text-gray-400  h-10 w-full" version="1.1" width="24px" height="24px"
                                                 id="Layer_1" stroke="#ffffff" xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                 viewBox="0 0 512 512"
@@ -138,13 +138,13 @@
                                             </svg>
                                         </a>
                                             <a class="w-full text-center" href="/public/storage/{{$proyecto->registro}}" target="_blank">
-                                                    <span class=" tracking-normal text-center text-black font-bold">Registro cargado</span>
+                                                    <span class=" tracking-normal text-center text-gray-900 dark:text-gray-400 font-bold">Registro cargado</span>
                                                 </a>
                                                 <a class="w-full text-center" href="/public/storage/{{$proyecto->registro}}" target="_blank">
-                                                    <span class=" tracking-normal text-center text-black font-bold">BPIN {{$proyecto->bpin}}</span> 
+                                                    <span class=" tracking-normal text-center text-gray-900 dark:text-gray-400 font-bold">BPIN {{$proyecto->bpin}}</span> 
                                                 </a>   
                                                 @else
-                                                <svg class="  h-10 w-full" version="1.1" width="24px" height="24px"
+                                                <svg class="  h-10 w-full text-gray-900 dark:text-gray-400" version="1.1" width="24px" height="24px"
                                                         id="Layer_1" stroke="#ffffff" xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                         viewBox="0 0 512 512"
@@ -167,21 +167,21 @@
 
                                                     <form wire:submit.prevent="submit" enctype="multipart/form-data">
                                                         <div
-                                                            class="grid grid-cols-12 text-xs bg-white dark:bg-gray-600  dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">
+                                                            class="grid grid-cols-12 text-xs bg-gray-100  dark:bg-gray-600  dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">
 
 
 
                                                             <div class="col-span-12">
                                                                 <div class=" w-full items-center justify-center ">
-                                                                <input type='number' class="form-control text-right text-xs text-gray-600 font-medium" {{ $filenabled }} wire:model="bpin" placeholder="Escriba el código BPIN" />
+                                                                <input type='number' class="form-control text-right dark:bg-gray-900 text-xs text-gray-600 font-medium" {{ $filenabled }} wire:model="bpin" placeholder="Escriba el código BPIN" />
                                                                     <div x-data="{ isUploading: false, progress: 0 }"
                                                                         x-on:livewire-upload-start="isUploading = true"
                                                                         x-on:livewire-upload-finish="isUploading = false"
                                                                         x-on:livewire-upload-error="isUploading = false"
                                                                         x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                                         <label
-                                                                            class="w-full flex  text-center items-center px-2 py-2 text-gray-100 bg-white {{ $fileclass }}  text-blue rounded-lg tracking-normal border border-blue">
-                                                                            <svg class="w-6 h-6 mr-2"
+                                                                            class="w-full flex  dark:bg-gray-900  text-center items-center px-2 py-2 text-gray-100  {{ $fileclass }}  text-blue rounded-lg tracking-normal border border-blue">
+                                                                            <svg class="text-gray-900 dark:text-gray-400 w-6 h-6 mr-2 "
                                                                                 fill="currentColor"
                                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                                 viewBox="0 0 20 20">
@@ -189,7 +189,7 @@
                                                                                     d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                                                             </svg>
                                                                             <span
-                                                                                class="mt-2 text-xs text-gray-600 truncate leading-3 text-right width-full">{{ $nombreDoc }}</span>
+                                                                                class="mt-2 text-xs dark:bg-gray-900  text-gray-600 truncate leading-3 text-right width-full">{{ $nombreDoc }}</span>
                                                                                 
 
                                                                                 <input type='file' class="hidden" {{ $filenabled }}
@@ -213,8 +213,8 @@
 
                                                             @if($proyecto->bpin == "")
                                                                 <button type="submit" {{ $statusUploadBtn }}
-                                                                    class=" border-gray-100 focus:shadow-outline h-full {{ $classUploadBtn }} font-bold py-2 px-4 rounded inline-flex items-center w-full">
-                                                                    <svg class="w-4 h-4 mr-2 fill-current text-white"
+                                                                    class="dark:bg-gray-900   border-gray-100 focus:shadow-outline h-full {{ $classUploadBtn }} font-bold py-2 px-4 rounded inline-flex items-center w-full">
+                                                                    <svg class="w-4 h-4 mr-2 fill-current text-white text-gray-900 dark:text-gray-400"
                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                         viewBox="0 0 20 20">
                                                                         <path
@@ -226,8 +226,8 @@
                                                                 </button>
                                                                 @else
                                                                 <button type="submit" {{ $statusUploadBtn }}
-                                                                    class=" border-gray-100 focus:shadow-outline h-full {{ $classUploadBtn }} font-bold py-2 px-4 rounded inline-flex items-center w-full">
-                                                                    <svg class="w-4 h-4 mr-2 fill-current text-white"
+                                                                    class=" border-gray-100 focus:shadow-outline dark:bg-gray-900  bg-gray-100 h-full {{ $classUploadBtn }} font-bold py-2 px-4 rounded inline-flex items-center w-full">
+                                                                    <svg class="w-4 h-4 mr-2 fill-current text-white text-gray-900 dark:text-gray-400"
                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                         viewBox="0 0 20 20">
                                                                         <path
@@ -334,12 +334,17 @@
                     aElements[i].classList.remove("text-white");
                     aElements[i].classList.remove("bg-blue-900");
                     aElements[i].classList.add("text-blue-900");
-                    aElements[i].classList.add("bg-white");
+                    aElements[i].classList.add("dark:text-blue-100");
+                    aElements[i].classList.add("bg-gray100");
+                    aElements[i].classList.add("dark:bg-gray-900");
                     tabContents[i].classList.add("hidden");
                     tabContents[i].classList.remove("block");
                 }
                 element.classList.remove("text-blue-900");
-                element.classList.remove("bg-white");
+                element.classList.remove("dark:text-blue-100");
+                element.classList.remove("bg-gray100");
+                element.classList.remove("dark:bg-gray-900");
+
                 element.classList.add("text-white");
                 element.classList.add("bg-blue-900");
                 document.getElementById(tabID).classList.remove("hidden");

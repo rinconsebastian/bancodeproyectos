@@ -79,3 +79,10 @@ tr:nth-child(od) {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+.st0 {
+    fill: #ffffff !important;
+}
+
+.st1{
+	fill: #2240AF;
+}
